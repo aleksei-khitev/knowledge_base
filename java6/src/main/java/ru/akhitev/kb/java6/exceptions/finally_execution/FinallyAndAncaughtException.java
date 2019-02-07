@@ -1,4 +1,4 @@
-package ru.akhitev.kb.java6.exceptions;
+package ru.akhitev.kb.java6.exceptions.finally_execution;
 
 public class FinallyAndAncaughtException {
     public static void main(String[] args) {
@@ -10,6 +10,9 @@ public class FinallyAndAncaughtException {
 
     }
 
+    /**
+     * Finally block is executed and it's executed before throwing away uncaught exception.
+     */
     private static void methodWithThrowing() {
         try {
             throw new RuntimeException();
