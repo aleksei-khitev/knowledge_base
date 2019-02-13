@@ -1,5 +1,7 @@
 package ru.akhitev.kb.java6.rtti.class_for_name;
 
+import ru.akhitev.kb.java6.exceptions.finally_lost_exception.LostByReturn;
+
 public class GetClassForName {
 
     /**
@@ -8,7 +10,8 @@ public class GetClassForName {
      */
     public static void main(String[] args) {
         try {
-            Class<?> lostByReturnClass = Class.forName("ru.akhitev.kb.java6.exceptions.finally_lost_exception.LostByReturn");
+            String className = "ru.akhitev.kb.java6.exceptions.finally_lost_exception.LostByReturn";
+            Class<?> lostByReturnClass = Class.forName(className);
             System.out.println("getName " + lostByReturnClass.getName());
             System.out.println("getSimpleName " + lostByReturnClass.getSimpleName());
             System.out.println("getCanonicalName " + lostByReturnClass.getCanonicalName());

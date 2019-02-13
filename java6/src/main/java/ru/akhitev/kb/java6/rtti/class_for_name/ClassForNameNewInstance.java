@@ -9,7 +9,8 @@ public class ClassForNameNewInstance {
      */
     public static void main(String[] args) {
         try {
-            Class<?> lostByReturnClass = Class.forName("ru.akhitev.kb.java6.rtti.class_for_name.ClassForNameNewInstance");
+            String className = "ru.akhitev.kb.java6.rtti.class_for_name.ClassForNameNewInstance";
+            Class<?> lostByReturnClass = Class.forName(className);
             ClassForNameNewInstance someClass = (ClassForNameNewInstance) lostByReturnClass.newInstance();
             someClass.printSomeThing();
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
@@ -18,7 +19,8 @@ public class ClassForNameNewInstance {
     }
 
     private void printSomeThing() {
-        System.out.println("Something");
+        String message = "SomeThing";
+        System.out.println(message);
     }
 }
 

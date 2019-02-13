@@ -9,7 +9,8 @@ public class FaceClassNotFoundException {
      */
     public static void main(String[] args) {
         try {
-            Class<?> lostByReturnClass = Class.forName("ru.akhitev.kb.java6.exceptions.finally_lost_exception.NonExistClass");
+            String className = "ru.akhitev.kb.java6.exceptions.finally_lost_exception.NonExistClass";
+            Class<?> lostByReturnClass = Class.forName(className);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

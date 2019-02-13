@@ -1,21 +1,27 @@
-package ru.akhitev.kb.java6.rtti;
+package ru.akhitev.kb.java6.rtti.take_class;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class GetClass {
+    static final int compileTimeConst = 47; // Константа времени компиляции
+    static final int notCompileTimeConst = nextInt(1000); // Константа времени выполнения
+
+
     public static void main(String[] args) {
         List<String> list = new LinkedList<>();
         getClass(list);
     }
 
-    /**
-     * getClass() returns real class of the object
-     * No generic information, because it was errased on compile time
-    */
     private static void getClass(List<String> list) {
         Class listClass = list.getClass();
         System.out.println(listClass.getName());
+    }
+
+    private static int nextInt(int i) {
+        Random random = new Random();
+        return random.nextInt(i);
     }
 }
 
