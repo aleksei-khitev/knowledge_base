@@ -4,8 +4,8 @@ import ru.akhitev.kb.javafx.swing.SwingApplication;
 
 public class Launcher {
     public static void main(String[] args) {
-        JavaFxInSwingPanel javaFxInSwingPanel = new JavaFxInSwingPanel();
-        SwingApplication swingApplication = new SwingApplication(javaFxInSwingPanel);
+        JavaFxInSwingExample example = new JavaFxInSwingExample();
+        SwingApplication swingApplication = new SwingApplication(example);
         javax.swing.SwingUtilities.invokeLater(swingApplication::createAndShowGUI);
     }
 }

@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.function.Consumer;
 
-public class JavaFxInSwingPanel implements Consumer<JPanel> {
+public class JavaFxInSwingExample implements Consumer<JPanel> {
 
     @Override
     public void accept(JPanel jPanel) {
