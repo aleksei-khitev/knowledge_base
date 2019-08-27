@@ -25,13 +25,3 @@ public class WithGenericExtends {
         someNumberClass = Number.class;
     }
 }
-
-// compile error if  16 line is uncommented:
-// -------
-// Incompatible types.
-// Required:
-// Class
-//     <java.lang.Number>
-// Found:
-// Class
-//     <java.lang.Integer>

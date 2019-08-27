@@ -12,12 +12,3 @@ public class WithGeneric {
     }
 }
 
-// compile error if  11 line is uncommented:
-// -------
-// Incompatible types.
-// Required:
-// Class
-//     <java.lang.Integer>
-// Found:
-// Class
-//     <java.lang.Double>

@@ -1,6 +1,5 @@
 package ru.akhitev.kb.java6.rtti.class_for_name;
 
-import ru.akhitev.kb.java6.exceptions.finally_lost_exception.LostByReturn;
 
 public class GetClassForName {
 
