@@ -11,6 +11,7 @@ public class UnmodifiableCollection {
         list.add("b");
         list.add("c");
         List<String> unmodifiableList = Collections.unmodifiableList(list);
-        unmodifiableList.add("d");
+        unmodifiableList.set(2, "d");
+        //unmodifiableList.add("d");
     }
 }
