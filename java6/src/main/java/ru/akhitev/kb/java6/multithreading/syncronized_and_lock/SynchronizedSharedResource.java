@@ -2,7 +2,7 @@ package ru.akhitev.kb.java6.multithreading.syncronized_and_lock;
 
 import java.util.stream.IntStream;
 
-public class SynchronizedSharedResource implements SharedResource {
+class SynchronizedSharedResource implements SharedResource {
     private int i;
 
     public synchronized int calculate(int first, int last) {

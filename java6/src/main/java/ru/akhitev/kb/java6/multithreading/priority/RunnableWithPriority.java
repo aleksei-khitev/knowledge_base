@@ -2,7 +2,7 @@ package ru.akhitev.kb.java6.multithreading.priority;
 
 import java.util.concurrent.TimeUnit;
 
-public class RunnableWithPriority implements Runnable {
+class RunnableWithPriority implements Runnable {
     private final int priority;
 
     public RunnableWithPriority(int priority) {

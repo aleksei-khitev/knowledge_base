@@ -1,6 +1,6 @@
 package ru.akhitev.kb.java6.multithreading.join;
 
-public class Sleeper extends Thread {
+class Sleeper extends Thread {
     @Override
     public void run() {
         try {

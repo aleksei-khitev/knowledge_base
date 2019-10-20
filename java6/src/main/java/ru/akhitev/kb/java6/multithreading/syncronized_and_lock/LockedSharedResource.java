@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
-public class LockedSharedResource implements SharedResource {
+class LockedSharedResource implements SharedResource {
     private Lock lock = new ReentrantLock();
     private int i;
 

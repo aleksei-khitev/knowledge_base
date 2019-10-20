@@ -1,6 +1,6 @@
 package ru.akhitev.kb.java6.multithreading.join;
 
-public class Joiner extends Thread {
+class Joiner extends Thread {
     private Thread sleeper;
 
     public Joiner(Thread sleeper) {

@@ -2,7 +2,7 @@ package ru.akhitev.kb.java6.multithreading.daemon;
 
 import java.util.concurrent.TimeUnit;
 
-public class RunnableForDaemonWithFinally implements Runnable {
+class RunnableForDaemonWithFinally implements Runnable {
     @Override
     public void run() {
         try {

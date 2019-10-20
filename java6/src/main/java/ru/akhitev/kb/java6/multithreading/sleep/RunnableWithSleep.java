@@ -2,7 +2,7 @@ package ru.akhitev.kb.java6.multithreading.sleep;
 
 import java.util.concurrent.TimeUnit;
 
-public class RunnableWithSleep implements Runnable {
+class RunnableWithSleep implements Runnable {
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getId() + " started working");
