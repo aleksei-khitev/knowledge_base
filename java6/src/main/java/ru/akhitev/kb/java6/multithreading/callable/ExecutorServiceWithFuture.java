@@ -1,7 +1,5 @@
 package ru.akhitev.kb.java6.multithreading.callable;
 
-import ru.akhitev.kb.java6.multithreading.callable.SimpleCallable;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
