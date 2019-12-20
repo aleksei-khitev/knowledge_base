@@ -10,3 +10,18 @@ public class Launcher {
         messageBeam.repeatMessage();
     }
 }
+
+/*
+Вывод:
+======
+SOS
+SOS
+SOS
+SOS
+SOS
+SOS
+SOS
+SOS
+SOS
+SOS
+ */
