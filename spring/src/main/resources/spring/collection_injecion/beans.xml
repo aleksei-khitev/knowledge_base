@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Scout Line" class="ru.akhitev.kb.spring.collection_injecion.FleetUnit">
+        <property name="ships">
+            <map>
+                <entry key="Nebulon-B 2">
+                    <value>6</value>
+                </entry>
+                <entry key="Carakka">
+                    <value>4</value>
+                </entry>
+                <entry key="Corvette">
+                    <value>20</value>
+                </entry>
+            </map>
+        </property>
+        <property name="capitalShips">
+            <set>
+                <value>Зоркий</value>
+                <value>Стремительный</value>
+            </set>
+        </property>
+        <property name="superiorOfficers">
+            <props>
+                <prop key="Командир линии">Ушаков</prop>
+                <prop key="Командир ИСБ">Давялов</prop>
+            </props>
+        </property>
+        <property name="route">
+            <list>
+                <value>Марс</value>
+                <value>Альфа-Лебедь</value>
+                <value>Вега</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
