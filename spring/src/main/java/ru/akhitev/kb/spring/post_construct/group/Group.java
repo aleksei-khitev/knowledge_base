@@ -13,7 +13,7 @@ public class Group {
     }
 
     @PostConstruct
-    public void initialize() {
+    private void initialize() {
         System.out.println("-------\nReady Check:\n------");
         players.forEach(System.out::println);
     }

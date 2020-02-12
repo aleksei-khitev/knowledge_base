@@ -12,7 +12,7 @@ public class Player {
     }
 
     @PostConstruct
-    public void initialize() throws InterruptedException {
+    private void initialize() throws InterruptedException {
         System.out.println(role + " changing skills, sets and portions");
         TimeUnit.MILLISECONDS.sleep(100);
         ready = true;
