@@ -7,6 +7,6 @@
         default-lazy-init="true">
 
     <bean id="retro" destroy-method="afterMeeting"
-          class="ru.akhitev.kb.spring.destroy_mehod.Retro" />
+          class="ru.akhitev.kb.spring.destroy_method.Retro" />
 
 </beans>

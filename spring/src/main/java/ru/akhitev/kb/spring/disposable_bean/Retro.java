@@ -1,7 +1,11 @@
-package ru.akhitev.kb.spring.destroy_mehod;
+package ru.akhitev.kb.spring.disposable_bean;
 
-public class Retro {
-    public void afterMeeting() {
+import org.springframework.beans.factory.DisposableBean;
+
+public class Retro implements DisposableBean {
+
+    @Override
+    public void destroy() throws Exception {
         System.out.println("Preparing new board");
         System.out.println("Copying new action points to Retro Chronicle page");
         System.out.println("Copying new action points to the new board as previous action points");
