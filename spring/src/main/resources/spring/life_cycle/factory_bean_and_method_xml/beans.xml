@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sectionOne"
+          class="ru.akhitev.kb.spring.life_cycle.factory_bean_and_method_xml.SectionOne" />
+
+    <bean id="operationAgent"
+          factory-bean="sectionOne"
+          factory-method="provideAgent" />
+
+    <bean id="operation"
+          c:agent-ref="operationAgent"
+          class="ru.akhitev.kb.spring.life_cycle.factory_bean_and_method_xml.Operation" />
+</beans>
