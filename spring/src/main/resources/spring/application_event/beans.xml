@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-lazy-init="true">
+
+    <bean c:_0="Zantar" class="ru.akhitev.kb.spring.application_event.players.Player" />
+    <bean c:_0="Baghash" class="ru.akhitev.kb.spring.application_event.players.Player" />
+    <bean c:_0="Uzuldal" class="ru.akhitev.kb.spring.application_event.players.Player" />
+    <bean c:_0="Volhovec" class="ru.akhitev.kb.spring.application_event.players.Player" />
+
+    <bean id="bg" class="ru.akhitev.kb.spring.application_event.battleground.BattleGround" />
+</beans>
