@@ -10,10 +10,14 @@
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder
-        location="spring/environment_properties_injection/infrastructure.properties" />
+        location="spring/environment_properties_injection/infrastructure.properties,
+        spring/environment_properties_injection/user.properties" local-override="true" />
 
     <bean class="ru.akhitev.kb.spring.environment_properties_injection.HomeInfrastructureInfo"
           c:transmissionAddress="${transmission.address}"
           c:plexAddress="${plex.address}" />
+
+    <bean class="ru.akhitev.kb.spring.environment_properties_injection.UserInfo"
+          c:homeDir="${user.home}" />
 
 </beans>
