@@ -46,8 +46,15 @@ public class JdbcTemplateDaoTest {
     }
 
     @Test
-    public void having_fleetUnitDao_when_findAll_then_return_allShips() {
+    public void having_fleetUnitDao_when_findAll_then_return_allFleetUnits() {
         List<FleetUnit> fleetUnits = fleetUnitDao.findAll();
+        Assert.assertNotNull(fleetUnits);
+        logger.info("fleetUnits = {}", fleetUnits);
+    }
+
+    @Test
+    public void having_fleetUnitDao_when_findAllWithShips_then_return_allFleetUnitsWithShips() {
+        List<FleetUnit> fleetUnits = fleetUnitDao.findAllWithShips();
         Assert.assertNotNull(fleetUnits);
         logger.info("fleetUnits = {}", fleetUnits);
     }

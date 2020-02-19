@@ -1,15 +1,18 @@
-package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao.dao;
+package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.stereotype.Repository;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.FleetUnit;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class FleetUnitDao implements InitializingBean {
     private static Logger logger = LoggerFactory.getLogger(FleetUnitDao.class);
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public FleetUnitDao(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
