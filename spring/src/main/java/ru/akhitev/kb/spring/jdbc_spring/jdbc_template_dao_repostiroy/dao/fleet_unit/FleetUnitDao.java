@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.InsertFleetUnit;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectAllFleetUnits;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectFleetUnitNameById;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.UpdateFleetUnits;
@@ -29,15 +33,16 @@ public class FleetUnitDao implements InitializingBean {
     private SelectAllFleetUnits selectAllFleetUnits;
     private SelectFleetUnitNameById selectFleetUnitNameById;
     private UpdateFleetUnits updateFleetUnits;
-    private JdbcTemplate jdbcTemplate;
+    private InsertFleetUnit insertFleetUnit;
+    private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Autowired
     public FleetUnitDao(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(dataSource);
+        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         selectAllFleetUnits = new SelectAllFleetUnits(dataSource);
         selectFleetUnitNameById = new SelectFleetUnitNameById(dataSource);
         updateFleetUnits = new UpdateFleetUnits(dataSource);
+        insertFleetUnit = new InsertFleetUnit(dataSource);
     }
 
     public List<FleetUnit> findAll() {
@@ -67,6 +72,21 @@ public class FleetUnitDao implements InitializingBean {
         parameters.put("id", id);
         parameters.put("new_name", newName);
         updateFleetUnits.updateByNamedParam(parameters);
+    }
+
+    public void insert(FleetUnit fleetUnit) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", fleetUnit.getName());
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertFleetUnit.updateByNamedParam(parameters, keyHolder);
+        fleetUnit.setId(keyHolder.getKey().longValue());
+        logger.info("insert complete. Generated id = {}", fleetUnit.getId());
+    }
+
+    public void delete(long id) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", id);
+        jdbcTemplate.update("delete from fleet_unit where id=:id", parameters);
     }
 
     @Override

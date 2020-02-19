@@ -40,12 +40,22 @@ public class FleetUnitDaoSpec {
 
     @Test
     public void when_updateByName_then_nameUpdated() {
-        List<FleetUnit> fleetUnits = dao.findAll();
-        logger.info("fleetUnits = {}", fleetUnits);
+        logger.info("fleetUnits = {}", dao.findAll());
         dao.updateName(1L, "PL");
-        logger.info("fleetUnits = {}", fleetUnits); // Возвращает из кэша, видимо. В консоле базы видно, что поменялось
+        logger.info("fleetUnits = {}", dao.findAll()); // Возвращает из кэша, видимо. В консоле базы видно, что поменялось
         dao.updateName(1L, "Persuade Line");
-        logger.info("fleetUnits = {}", fleetUnits);
+        logger.info("fleetUnits = {}", dao.findAll());
+    }
+
+    @Test
+    public void when_insertFleetUnit_then_idGenerated() {
+        logger.info("fleetUnits = {}", dao.findAll());
+        FleetUnit fleetUnit = new FleetUnit();
+        fleetUnit.setName("Scout Line");
+        dao.insert(fleetUnit);
+        logger.info("fleetUnits = {}", dao.findAll());
+        dao.delete(fleetUnit.getId());
+        logger.info("fleetUnits = {}", dao.findAll());
     }
 
     @Test
