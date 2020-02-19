@@ -11,6 +11,7 @@ ext {
     groovyVersion = '2.4.5'
     mysqlVersion = '6.0.6'
     h2Version = '1.4.194'
+    dbcpVersion = '2.1'
 
     slf4jVersion = '1.7.25'
     logbackVersion = '1.2.3'
@@ -30,6 +31,7 @@ ext {
     db = [
             mysql       : "mysql:mysql-connector-java:$mysqlVersion",
             h2          : "com.h2database:h2:$h2Version",
+            dbcp2 : "org.apache.commons:commons-dbcp2:$dbcpVersion",
     ]
 }
 
@@ -43,6 +45,7 @@ dependencies {
     compile misc.groovy
     compile db.mysql
     compile db.h2
+    compile db.dbcp2
     compile misc.slf4jJcl
     compile misc.logback
     compile spring.jdbc

@@ -28,13 +28,23 @@ public class FleetUnitDaoSpec {
         String name = dao.findNameById(1L);
         Assert.assertNotNull(name);
         logger.info("name = {}", name);
-        Assert.assertEquals("Persuage Line", name);
+        Assert.assertEquals("Persuade Line", name);
     }
 
     @Test
     public void when_findAll_then_return_allFleetUnits() {
         List<FleetUnit> fleetUnits = dao.findAll();
         Assert.assertNotNull(fleetUnits);
+        logger.info("fleetUnits = {}", fleetUnits);
+    }
+
+    @Test
+    public void when_updateByName_then_nameUpdated() {
+        List<FleetUnit> fleetUnits = dao.findAll();
+        logger.info("fleetUnits = {}", fleetUnits);
+        dao.updateName(1L, "PL");
+        logger.info("fleetUnits = {}", fleetUnits); // Возвращает из кэша, видимо. В консоле базы видно, что поменялось
+        dao.updateName(1L, "Persuade Line");
         logger.info("fleetUnits = {}", fleetUnits);
     }
 

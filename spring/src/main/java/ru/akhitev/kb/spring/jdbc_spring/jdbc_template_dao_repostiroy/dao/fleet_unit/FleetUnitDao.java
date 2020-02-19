@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectAllFleetUnits;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectFleetUnitNameById;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.UpdateFleetUnits;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.FleetUnit;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
 
@@ -25,6 +27,8 @@ import java.util.Map;
 public class FleetUnitDao implements InitializingBean {
     private static Logger logger = LoggerFactory.getLogger(FleetUnitDao.class);
     private SelectAllFleetUnits selectAllFleetUnits;
+    private SelectFleetUnitNameById selectFleetUnitNameById;
+    private UpdateFleetUnits updateFleetUnits;
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -32,6 +36,8 @@ public class FleetUnitDao implements InitializingBean {
         jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
         selectAllFleetUnits = new SelectAllFleetUnits(dataSource);
+        selectFleetUnitNameById = new SelectFleetUnitNameById(dataSource);
+        updateFleetUnits = new UpdateFleetUnits(dataSource);
     }
 
     public List<FleetUnit> findAll() {
@@ -46,10 +52,21 @@ public class FleetUnitDao implements InitializingBean {
     }
 
     public String findNameById(Long id) {
-        Object[] objects = new Object[]{id};
-        return jdbcTemplate.queryForObject("select name from fleet_unit where id = ?",
-                objects,
-                String.class);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", id);
+        List<String> names = selectFleetUnitNameById.executeByNamedParam(parameters);
+        if (names.size() > 0) {
+            return names.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public void updateName(long id, String newName) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", id);
+        parameters.put("new_name", newName);
+        updateFleetUnits.updateByNamedParam(parameters);
     }
 
     @Override
