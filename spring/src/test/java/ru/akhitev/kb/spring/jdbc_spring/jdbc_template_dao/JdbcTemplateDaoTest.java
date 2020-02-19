@@ -11,6 +11,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao.dao.FleetUnitDao;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao.dao.ShipDao;
+import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.FleetUnit;
+import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
+
+import java.util.List;
 
 public class JdbcTemplateDaoTest {
     private static Logger logger = LoggerFactory.getLogger(JdbcTemplateDaoTest.class);
@@ -39,5 +43,19 @@ public class JdbcTemplateDaoTest {
         Assert.assertNotNull(name);
         logger.info("name = {}", name);
         Assert.assertEquals("101", name);
+    }
+
+    @Test
+    public void having_fleetUnitDao_when_findAll_then_return_allShips() {
+        List<FleetUnit> fleetUnits = fleetUnitDao.findAll();
+        Assert.assertNotNull(fleetUnits);
+        logger.info("fleetUnits = {}", fleetUnits);
+    }
+
+    @Test
+    public void having_shipsDao_when_findAll_then_return_allShips() {
+        List<Ship> ships = shipDao.findAll();
+        Assert.assertNotNull(ships);
+        logger.info("ships = {}", ships);
     }
 }
