@@ -5,11 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.FleetUnitDao;
-import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.ShipDao;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.FleetUnitDao;
 
 import javax.sql.DataSource;
 

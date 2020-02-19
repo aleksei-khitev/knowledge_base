@@ -1,4 +1,4 @@
-package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao;
+package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +9,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectAllFleetUnits;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.FleetUnit;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,21 +24,18 @@ import java.util.Map;
 @Repository
 public class FleetUnitDao implements InitializingBean {
     private static Logger logger = LoggerFactory.getLogger(FleetUnitDao.class);
+    private SelectAllFleetUnits selectAllFleetUnits;
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public FleetUnitDao(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
+        selectAllFleetUnits = new SelectAllFleetUnits(dataSource);
     }
 
     public List<FleetUnit> findAll() {
-        return jdbcTemplate.query("select * from fleet_unit", (ResultSet rs, int rowNum) -> {
-            FleetUnit fleetUnit = new FleetUnit();
-            fleetUnit.setId(rs.getLong("id"));
-            fleetUnit.setName(rs.getString("name"));
-            return fleetUnit;
-        });
+        return selectAllFleetUnits.execute();
     }
 
     public List<FleetUnit> findAllWithShips() {

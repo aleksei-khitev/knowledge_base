@@ -1,4 +1,4 @@
-package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao;
+package ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.ship;
 
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;

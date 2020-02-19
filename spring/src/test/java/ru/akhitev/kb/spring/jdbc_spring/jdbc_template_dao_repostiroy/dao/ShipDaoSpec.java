@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.DbConfig;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.ship.ShipDao;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
 
 import java.util.List;
