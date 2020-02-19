@@ -9,12 +9,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.FleetUnitDao;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.service.FleetUnitService;
 
 import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("spring/jdbc_spring/data_source/jdbc_for_utils.properties")
-@ComponentScan(basePackageClasses = FleetUnitDao.class)
+@ComponentScan(basePackageClasses = DbConfig.class)
 public class DbConfig {
     private static Logger logger = LoggerFactory.getLogger(DbConfig.class);
     @Value("${driverClassName}") private String driverClassName;

@@ -32,6 +32,14 @@ public class FleetUnitDaoSpec {
     }
 
     @Test
+    public void when_getNameByIdFunctionInvoken_then_returnName() {
+        String name = dao.getNameByIdViaFunction(1L);
+        Assert.assertNotNull(name);
+        logger.info("name = {}", name);
+        Assert.assertEquals("Persuade Line", name);
+    }
+
+    @Test
     public void when_findAll_then_return_allFleetUnits() {
         List<FleetUnit> fleetUnits = dao.findAll();
         Assert.assertNotNull(fleetUnits);

@@ -16,6 +16,7 @@ import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_u
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectAllFleetUnits;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.SelectFleetUnitNameById;
 import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.query.UpdateFleetUnits;
+import ru.akhitev.kb.spring.jdbc_spring.jdbc_template_dao_repostiroy.dao.fleet_unit.stored_function.GetNameById;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.FleetUnit;
 import ru.akhitev.kb.spring.jdbc_spring.plain_dao.entity.Ship;
 
@@ -34,6 +35,7 @@ public class FleetUnitDao implements InitializingBean {
     private SelectFleetUnitNameById selectFleetUnitNameById;
     private UpdateFleetUnits updateFleetUnits;
     private InsertFleetUnit insertFleetUnit;
+    private GetNameById getNameById;
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -43,6 +45,7 @@ public class FleetUnitDao implements InitializingBean {
         selectFleetUnitNameById = new SelectFleetUnitNameById(dataSource);
         updateFleetUnits = new UpdateFleetUnits(dataSource);
         insertFleetUnit = new InsertFleetUnit(dataSource);
+        getNameById = new GetNameById(dataSource);
     }
 
     public List<FleetUnit> findAll() {
@@ -65,6 +68,11 @@ public class FleetUnitDao implements InitializingBean {
         } else {
             return null;
         }
+    }
+
+    public String getNameByIdViaFunction(Long id) {
+        List<String> result = getNameById.execute(id);
+        return result.get(0);
     }
 
     public void updateName(long id, String newName) {
