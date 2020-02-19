@@ -8,10 +8,24 @@ group = 'ru.akhitev.kb'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+ext {
+    bootVersion = '2.0.6.RELEASE'
+    h2Version = '1.4.194'
+
+    boot = [
+            springBootPlugin    : "org.springframework.boot:spring-boot-gradle-plugin:$bootVersion",
+            starterJdbc         : "org.springframework.boot:spring-boot-starter-jdbc:$bootVersion"
+    ]
+
+    db = [
+            h2                  : "com.h2database:h2:$h2Version",
+    ]
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile boot.starterJdbc, db.h2
 }
