@@ -5,6 +5,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "fleet_unit")
+@NamedQueries({
+        @NamedQuery(name="FleetUnit.findAllWithShips",
+            query = "select distinct fu from FleetUnit fu " +
+                    "left join fetch fu.ships s " +
+                    "left join fetch fu.commandRank")
+})
 public class FleetUnit {
     private Long id;
     private String name;
