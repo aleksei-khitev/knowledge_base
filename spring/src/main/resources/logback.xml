@@ -13,6 +13,10 @@
 
     <logger name="ru.akhitev.kb.spring.jdbc_spring" level="debug"/>
 
+    <!-- Эти 2 строки позволяют видеть параметры SQL -->
+    <logger name="org.hibernate.SQL" level="debug"/>
+    <logger name="org.hibernate.type" level="trace"/>
+
     <logger name="org.springframework" level="off"/>
 
     <root level="debug">
