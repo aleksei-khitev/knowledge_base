@@ -31,7 +31,7 @@ public class Ship {
         this.type = type;
     }
 
-    @Column
+    @Column(name = "ship_class")
     public String getShipClass() {
         return shipClass;
     }
@@ -61,6 +61,6 @@ public class Ship {
 
     @Override
     public String toString() {
-        return shipClass + "(" + id + ", " + type + ")";
+        return shipClass + "(" + type + ")";
     }
 }

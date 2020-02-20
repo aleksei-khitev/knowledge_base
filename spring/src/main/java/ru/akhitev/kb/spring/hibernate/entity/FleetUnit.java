@@ -55,7 +55,7 @@ public class FleetUnit {
         this.ships = ships;
     }
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "id.fleetUnit", cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
     public List<FleetUnitShipDetails> getShipDetailedList() {
@@ -78,7 +78,7 @@ public class FleetUnit {
 
     @Override
     public String toString() {
-        return name + "{" + id + ", мин. ранг: " + commandRank.getName() +
+        return name + "{мин. ранг: " + commandRank.getName() +
                 ", состав: " + shipDetailedList + "}";
     }
 }
