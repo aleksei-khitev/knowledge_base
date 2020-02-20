@@ -22,10 +22,25 @@ public class FleetUnitDao {
     }
 
     public List<FleetUnit> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from FleetUnit fu").list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("from FleetUnit fu").list();
     }
 
     public List<FleetUnit> findAllWithShips() {
-        return sessionFactory.getCurrentSession().getNamedQuery("FleetUnit.findAllWithShips").list();
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("FleetUnit.findAllWithShips").list();
+    }
+
+    public FleetUnit findAllWithShipsById(Long id) {
+        return (FleetUnit) sessionFactory.getCurrentSession()
+                .getNamedQuery("FleetUnit.findAllWithShipsById")
+                .setParameter("id", id)
+                .uniqueResult();
+    }
+
+    public FleetUnit save(FleetUnit fleetUnit) {
+        sessionFactory.getCurrentSession()
+                .saveOrUpdate(fleetUnit);
+        return fleetUnit;
     }
 }

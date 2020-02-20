@@ -26,4 +26,20 @@ public class FleetUnitSpec {
         List<FleetUnit> fleetUnits = dao.findAllWithShips(); // а тут инициализированы
         logger.info("All states: {}", fleetUnits);
     }
+
+    @Test
+    public void when_findById_then_findAllById() {
+        FleetUnit fleetUnit = dao.findAllWithShipsById(2L);
+        logger.info("All states: {}", fleetUnit);
+    }
+
+
+    @Test
+    public void when_saveCommandRankWithChangedSubValue_then_Actualize() {
+        FleetUnit fleetUnit = dao.findAllWithShipsById(2L);
+        logger.info("До удаления {}", fleetUnit);
+        fleetUnit.getShips().remove(0);
+        dao.save(fleetUnit);
+        logger.info("После удаления {}", dao.findAllWithShipsById(2L));
+    }
 }

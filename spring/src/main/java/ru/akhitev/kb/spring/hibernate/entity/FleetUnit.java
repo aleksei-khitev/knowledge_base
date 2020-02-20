@@ -9,7 +9,12 @@ import java.util.List;
         @NamedQuery(name="FleetUnit.findAllWithShips",
             query = "select distinct fu from FleetUnit fu " +
                     "left join fetch fu.ships s " +
-                    "left join fetch fu.commandRank")
+                    "left join fetch fu.commandRank"),
+        @NamedQuery(name = "FleetUnit.findAllWithShipsById",
+             query = "select distinct fu from FleetUnit fu " +
+                     "left join fetch fu.ships s " +
+                     "left join fetch fu.commandRank " +
+                     "where fu.id = :id")
 })
 public class FleetUnit {
     private Long id;
@@ -49,7 +54,7 @@ public class FleetUnit {
         this.commandRank = commandRank;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "fleet_unit_ship",
             joinColumns = @JoinColumn(name = "fleet_unit_id"),
             inverseJoinColumns = @JoinColumn(name = "ship_id"))

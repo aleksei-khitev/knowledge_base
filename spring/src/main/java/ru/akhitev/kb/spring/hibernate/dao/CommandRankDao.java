@@ -25,4 +25,15 @@ public class CommandRankDao {
     public List<CommandRank> findAll() {
         return sessionFactory.getCurrentSession().createQuery("from CommandRank cr").list();
     }
+
+    public CommandRank save(CommandRank commandRank) {
+        sessionFactory.getCurrentSession()
+                .saveOrUpdate(commandRank);
+        return commandRank;
+    }
+
+    public void delete(CommandRank commandRank) {
+        sessionFactory.getCurrentSession()
+                .delete(commandRank);
+    }
 }
