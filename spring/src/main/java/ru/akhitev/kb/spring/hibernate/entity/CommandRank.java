@@ -1,12 +1,17 @@
 package ru.akhitev.kb.spring.hibernate.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "command_rank")
 public class CommandRank {
     private Long id;
     private String name;
+    private List<FleetUnit> fleetUnitsToCommand = new ArrayList<>();
     private int version;
 
     @Id
@@ -29,6 +34,18 @@ public class CommandRank {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "commandRank",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    public List<FleetUnit> getFleetUnitsToCommand() {
+        return fleetUnitsToCommand;
+    }
+
+    public void setFleetUnitsToCommand(List<FleetUnit> fleetUnitsToCommand) {
+        this.fleetUnitsToCommand = fleetUnitsToCommand;
+    }
+
     @Version
     @Column(name = "version")
     public int getVersion() {
@@ -41,6 +58,6 @@ public class CommandRank {
 
     @Override
     public String toString() {
-        return name + '(' + id + ')';
+        return name + '(' + id + ", может командовать: " + fleetUnitsToCommand + ')';
     }
 }

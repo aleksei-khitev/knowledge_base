@@ -1,13 +1,16 @@
 package ru.akhitev.kb.spring.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
-//@Entity
+@Entity
 @Table(name = "fleet_unit")
 public class FleetUnit {
     private Long id;
     private String name;
     private CommandRank commandRank;
+    private List<Ship> ships;
+    private List<FleetUnitShipDetails> shipDetailedList;
     private int version;
 
     @Id
@@ -30,12 +33,37 @@ public class FleetUnit {
         this.name = name;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "minimum_command_rank_id")
     public CommandRank getCommandRank() {
         return commandRank;
     }
 
     public void setCommandRank(CommandRank commandRank) {
         this.commandRank = commandRank;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "fleet_unit_ship",
+            joinColumns = @JoinColumn(name = "fleet_unit_id"),
+            inverseJoinColumns = @JoinColumn(name = "ship_id"))
+    public List<Ship> getShips() {
+        return ships;
+    }
+
+    public void setShips(List<Ship> ships) {
+        this.ships = ships;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    public List<FleetUnitShipDetails> getShipDetailedList() {
+        return shipDetailedList;
+    }
+
+    public void setShipDetailedList(List<FleetUnitShipDetails> shipDetailedList) {
+        this.shipDetailedList = shipDetailedList;
     }
 
     @Version
@@ -50,6 +78,7 @@ public class FleetUnit {
 
     @Override
     public String toString() {
-        return name + "(" + id + ", " + commandRank + ")";
+        return name + "{" + id + ", мин. ранг: " + commandRank.getName() +
+                ", состав: " + shipDetailedList + "}";
     }
 }
