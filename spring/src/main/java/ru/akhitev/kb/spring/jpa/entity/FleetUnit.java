@@ -5,7 +5,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "fleet_unit")
+@NamedQueries({
+        @NamedQuery(name = FleetUnit.FIND_ALL,
+                query = "select fu from FleetUnit fu"),
+        @NamedQuery(name = FleetUnit.FIND_BY_ID,
+                query = "select fu from FleetUnit fu where fu.id = :id"),
+})
 public class FleetUnit {
+    public static final String FIND_ALL = "FleetUnit.findAll";
+    public static final String FIND_BY_ID = "FleetUnit.findById";
     private Long id;
     private String name;
     private CommandRank commandRank;
