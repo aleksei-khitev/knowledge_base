@@ -11,9 +11,12 @@ import java.util.List;
         @NamedQuery(name = FleetUnit.FIND_BY_ID,
                 query = "select fu from FleetUnit fu where fu.id = :id"),
 })
+@SqlResultSetMapping(name = FleetUnit.FLEET_UNIT_NAME_AND_COMMAND_RANK_NAME,
+        entities = @EntityResult(entityClass = FleetUnitAndCommandRank.class))
 public class FleetUnit {
     public static final String FIND_ALL = "FleetUnit.findAll";
     public static final String FIND_BY_ID = "FleetUnit.findById";
+    public static final String FLEET_UNIT_NAME_AND_COMMAND_RANK_NAME = "fleetUnitAndCommandRank";
     private Long id;
     private String name;
     private CommandRank commandRank;
@@ -51,7 +54,6 @@ public class FleetUnit {
     }
 
     @OneToMany(mappedBy = "id.fleetUnit", cascade = CascadeType.ALL,
-            orphanRemoval = true,
             fetch = FetchType.EAGER)
     public List<FleetUnitShipDetails> getShipDetailedList() {
         return shipDetailedList;
@@ -73,7 +75,7 @@ public class FleetUnit {
 
     @Override
     public String toString() {
-        return name + "{мин. ранг: " + commandRank.getName() +
-                ", состав: " + shipDetailedList + "}";
+        return name + "{" + ((commandRank!=null)? "{мин. ранг: " + commandRank.getName() + ",":"") +
+                "состав: " + shipDetailedList + "}";
     }
 }

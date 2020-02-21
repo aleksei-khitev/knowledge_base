@@ -1,6 +1,7 @@
 package ru.akhitev.kb.spring.jpa.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ship")

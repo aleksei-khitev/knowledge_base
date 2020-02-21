@@ -6,12 +6,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.akhitev.kb.spring.jpa.entity.FleetUnit;
+import ru.akhitev.kb.spring.jpa.entity.FleetUnitAndCommandRank;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.Iterator;
 import java.util.List;
+
+import static ru.akhitev.kb.spring.jpa.entity.FleetUnit.FLEET_UNIT_NAME_AND_COMMAND_RANK_NAME;
 
 @Service
 @Repository
@@ -47,12 +50,44 @@ public class FleetUnitService {
 
     @Transactional(readOnly = true)
     public void displayFleetUnitAndCommandRank() {
-        List result = entityManager
+        List<?> result = entityManager
                 .createQuery("select fu.name, fu.commandRank.name from FleetUnit fu ")
                 .getResultList();
-        for (Iterator i = result.iterator(); i.hasNext(); ) {
+        for (Iterator<?> i = result.iterator(); i.hasNext(); ) {
             Object[] values = (Object[]) i.next();
             logger.info(values[0] + ": " + values[1]);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public void displayFleetUnitAndCommandRankViaConstructor() {
+        logger.info("List<FleetUnitAndCommandRank>:  {}", entityManager
+                .createQuery("select " +
+                        "new ru.akhitev.kb.spring.jpa.entity.FleetUnitAndCommandRank(fu.name, fu.commandRank.name) " +
+                        "from FleetUnit fu", FleetUnitAndCommandRank.class)
+                .getResultList());
+    }
+
+    @Transactional(readOnly = true)
+    public void displayFleetUnitAndCommandRankViaResultSetMapping() {
+        List<FleetUnitAndCommandRank> result = entityManager
+                .createNativeQuery("select fu.name, cr.name from fleet_unit fu" +
+                        "join command_rank cr on cr.id = uf.minimum_command_rank_id", FLEET_UNIT_NAME_AND_COMMAND_RANK_NAME)
+                .getResultList();
+        logger.info("result: {}", result);
+    }
+
+    public FleetUnit save(FleetUnit fleetUnit) {
+        if (fleetUnit.getId() == null) {
+            entityManager.persist(fleetUnit);
+        } else {
+            entityManager.merge(fleetUnit);
+        }
+        return fleetUnit;
+    }
+
+    public void delete(FleetUnit fleetUnit) {
+        FleetUnit mergedFleetUnit = entityManager.merge(fleetUnit);
+        entityManager.remove(mergedFleetUnit);
     }
 }
