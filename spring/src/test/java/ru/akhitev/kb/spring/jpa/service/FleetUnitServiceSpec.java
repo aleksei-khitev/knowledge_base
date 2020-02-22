@@ -71,4 +71,11 @@ public class FleetUnitServiceSpec {
         fleetUnitService.delete(fleetUnit);
         logger.info("fleetUnits after: {}", fleetUnitService.findAllWithNamedQuery());
     }
+
+    @Test
+    public void findByFewNames() {
+        ApplicationContext context = new GenericXmlApplicationContext("spring/jpa/beans.xml");
+        FleetUnitService fleetUnitService = context.getBean(FleetUnitService.class);
+        logger.info("По критераю: {}", fleetUnitService.findByFewNames("Разведывательная линия", "Разведывательно-ударная линия"));
+    }
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'groovy'
+    id 'idea'
 }
 
 group 'ru.akhitev.kb'
@@ -8,6 +9,7 @@ version '1.0-SNAPSHOT'
 
 ext {
     springVersion = '5.0.0.RELEASE'
+    springDataVersion = '2.0.11.RELEASE'
     groovyVersion = '2.4.5'
     mysqlVersion = '6.0.6'
     h2Version = '1.4.194'
@@ -23,6 +25,7 @@ ext {
             context     : "org.springframework:spring-context:$springVersion",
             jdbc        : "org.springframework:spring-jdbc:$springVersion", //для jdbc в spring
             orm         : "org.springframework:spring-orm:$springVersion", // для spring и hibernate (включая hibernateTemplate, LocalSessionFactoryBean, HibernateTransactionManager...)
+            data        : "org.springframework.data:spring-data-jpa:$springDataVersion" // для spring data jpa
     ]
 
     misc = [
@@ -48,7 +51,13 @@ ext {
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven { url "http://repo.spring.io/release" }
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/libs-snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/libs-milestone" }
 }
 
 dependencies {
@@ -60,6 +69,7 @@ dependencies {
     compile misc.logback
     compile spring.jdbc
     compile spring.context
+    compile spring.data
     compile misc.inject
     compile spring.orm
     compile misc.lang3

@@ -11,6 +11,7 @@ import ru.akhitev.kb.spring.jpa.entity.FleetUnitAndCommandRank;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.Iterator;
 import java.util.List;
 
@@ -89,5 +90,18 @@ public class FleetUnitService {
     public void delete(FleetUnit fleetUnit) {
         FleetUnit mergedFleetUnit = entityManager.merge(fleetUnit);
         entityManager.remove(mergedFleetUnit);
+    }
+
+    @Transactional(readOnly = true)
+    public List<FleetUnit> findByFewNames(String... names) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<FleetUnit> criteriaQuery = criteriaBuilder.createQuery(FleetUnit.class);
+        Root<FleetUnit> fleetUnitRoot = criteriaQuery.from(FleetUnit.class);
+        CriteriaBuilder.In<String> inClause = criteriaBuilder.in(fleetUnitRoot.get("name"));
+        for (String name : names) {
+            inClause.value(name);
+        }
+        CriteriaQuery<FleetUnit> query = criteriaQuery.select(fleetUnitRoot).where(inClause);
+        return entityManager.createQuery(query).getResultList();
     }
 }
