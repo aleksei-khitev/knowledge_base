@@ -6,6 +6,7 @@
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -16,9 +17,14 @@
                            http://www.springframework.org/schema/util
                            http://www.springframework.org/schema/util/spring-util.xsd
                            http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/data/jpa
+                           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
     <context:annotation-config />
-    <context:component-scan base-package="ru.akhitev.kb.spring.jpa.service" />
+    <context:component-scan base-package="ru.akhitev.kb.spring.jpa">
+            <context:exclude-filter type="annotation"
+                                    expression="org.springframework.context.annotation.Configuration"/>
+    </context:component-scan>
 
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="spring/hibernate/schema.sql" />
@@ -50,5 +56,10 @@
           class="org.springframework.orm.jpa.JpaTransactionManager" />
 
     <tx:annotation-driven />
+    
+    <jpa:repositories base-package="ru.akhitev.kb.spring.jpa.repo"
+                      entity-manager-factory-ref="emf"
+                      transaction-manager-ref="transactionManager" />
 
+    <jpa:auditing auditor-aware-ref="auditorAwareBean"/>
 </beans>

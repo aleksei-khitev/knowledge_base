@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "space_state")
-public class State {
+public class State extends AuditableEntity<State> {
     private Long id;
     private String name;
     private int version;

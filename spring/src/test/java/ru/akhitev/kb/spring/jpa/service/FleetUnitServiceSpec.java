@@ -4,8 +4,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import ru.akhitev.kb.spring.jpa.conf.AppConfig;
 import ru.akhitev.kb.spring.jpa.entity.FleetUnit;
+
+import java.util.List;
 
 public class FleetUnitServiceSpec {
     Logger logger = LoggerFactory.getLogger(FleetUnitServiceSpec.class);
@@ -59,7 +63,11 @@ public class FleetUnitServiceSpec {
         FleetUnit fleetUnit = new FleetUnit();
         fleetUnit.setName("Линия обеспечения");
         fleetUnitService.save(fleetUnit);
-        logger.info("fleetUnits: {}", fleetUnitService.findAllWithNamedQuery());
+        List<FleetUnit> all = fleetUnitService.findAllWithNamedQuery();
+        logger.info("fleetUnits: {}", all);
+        logger.info("auditor info. createdBy: {}, createdDate: {}, lastModifiedBy: {}, lastModifiedDate: {}",
+                fleetUnit.getCreatedBy(), fleetUnit.getCreatedDate(),
+                fleetUnit.getLastModifiedBy(), fleetUnit.getLastModifiedDate());
     }
 
     @Test
@@ -77,5 +85,27 @@ public class FleetUnitServiceSpec {
         ApplicationContext context = new GenericXmlApplicationContext("spring/jpa/beans.xml");
         FleetUnitService fleetUnitService = context.getBean(FleetUnitService.class);
         logger.info("По критераю: {}", fleetUnitService.findByFewNames("Разведывательная линия", "Разведывательно-ударная линия"));
+    }
+
+    @Test
+    public void findAllWithRepo() {
+        ApplicationContext context = new GenericXmlApplicationContext("spring/jpa/beans.xml");
+        FleetUnitService fleetUnitService = context.getBean(FleetUnitService.class);
+        logger.info("fleetUnits: {}", fleetUnitService.findAllWithRepo());
+    }
+
+    @Test
+    public void findByNameWithRepo() {
+        ApplicationContext context = new GenericXmlApplicationContext("spring/jpa/beans.xml");
+        FleetUnitService fleetUnitService = context.getBean(FleetUnitService.class);
+        logger.info("fleetUnits: {}", fleetUnitService.findByNameWithRepo("Разведывательная линия"));
+    }
+
+    @Test
+    public void findByNameAndCommandRankNameWithSpecialQueryInRepo() {
+        ApplicationContext context = new GenericXmlApplicationContext("spring/jpa/beans.xml");
+        FleetUnitService fleetUnitService = context.getBean(FleetUnitService.class);
+        logger.info("fleetUnits: {}", fleetUnitService
+                .findByNameAndCommandRankNameWithSpecialQueryInRepo("Разведывательная линия", "Линейный капитан"));
     }
 }

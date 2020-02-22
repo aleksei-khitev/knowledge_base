@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "command_rank")
-public class CommandRank {
+public class CommandRank extends AuditableEntity<CommandRank> {
     private Long id;
     private String name;
     private List<FleetUnit> fleetUnitsToCommand = new ArrayList<>();

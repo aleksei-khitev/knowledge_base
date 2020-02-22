@@ -2,11 +2,13 @@ package ru.akhitev.kb.spring.jpa.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.akhitev.kb.spring.jpa.entity.FleetUnit;
 import ru.akhitev.kb.spring.jpa.entity.FleetUnitAndCommandRank;
+import ru.akhitev.kb.spring.jpa.repo.FleetUnitRepo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +25,9 @@ import static ru.akhitev.kb.spring.jpa.entity.FleetUnit.FLEET_UNIT_NAME_AND_COMM
 public class FleetUnitService {
     private static Logger logger = LoggerFactory.getLogger(FleetUnitService.class);
     private final String ALL_FLEET_UNIT_NATIVE_QUERY = "select * from fleet_unit";
+
+    @Autowired
+    private FleetUnitRepo repo;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -103,5 +108,20 @@ public class FleetUnitService {
         }
         CriteriaQuery<FleetUnit> query = criteriaQuery.select(fleetUnitRoot).where(inClause);
         return entityManager.createQuery(query).getResultList();
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<FleetUnit> findAllWithRepo() {
+        return repo.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<FleetUnit> findByNameWithRepo(String name) {
+        return repo.findByName(name);
+    }
+
+    @Transactional(readOnly = true)
+    public List<FleetUnit> findByNameAndCommandRankNameWithSpecialQueryInRepo(String name, String commandRankName) {
+        return repo.findByNameAndCommandRankName(name, commandRankName);
     }
 }

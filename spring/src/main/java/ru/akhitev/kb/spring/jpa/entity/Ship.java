@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ship")
-public class Ship {
+public class Ship extends AuditableEntity<Ship> {
     private Long id;
     private String type;
     private String shipClass;
