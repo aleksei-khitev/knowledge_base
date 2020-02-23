@@ -1,7 +1,8 @@
 package ru.akhitev.kb.spring.jpa.entity;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ship")

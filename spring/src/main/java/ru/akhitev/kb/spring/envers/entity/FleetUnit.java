@@ -87,8 +87,8 @@ public class FleetUnit {
     @Override
     public String toString() {
         return name + "{"
-                + ((compositionByFleetUnits !=null)?"ед. флота: " + compositionByFleetUnits:"" )
-                + ((compositionByShips !=null)?"единицы флота: " + compositionByShips:"" )
+                + ((compositionByFleetUnits !=null && compositionByFleetUnits.size() > 0)?"ед. флота: " + compositionByFleetUnits:"" )
+                + ((compositionByShips !=null && compositionByShips.size() > 0)?"корабли: " + compositionByShips:"" )
                 + "}";
     }
 }

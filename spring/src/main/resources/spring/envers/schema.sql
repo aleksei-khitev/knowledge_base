@@ -47,3 +47,22 @@ CREATE TABLE fleet_unit_composition_by_fleet_units (
  CONSTRAINT fk_parent_fleet_unit FOREIGN KEY(parent_fleet_unit_id) REFERENCES fleet_unit(id),
  CONSTRAINT fk_child_fleet_unit FOREIGN KEY(child_fleet_unit_id) REFERENCES fleet_unit(id)
 );
+
+CREATE TABLE ship_h (
+ id INT NOT NULL AUTO_INCREMENT,
+ type VARCHAR(50) NOT NULL,
+ ship_class VARCHAR(50) NOT NULL,
+ link VARCHAR(200) NOT NULL,
+ version INT NOT NULL DEFAULT 0,
+ audit_revision INT NOT NULL,
+ action_type INT,
+ audit_revision_end INT,
+ audit_revision_end_ts TIMESTAMP,
+ PRIMARY KEY(id, audit_revision)
+);
+
+CREATE TABLE revinfo (
+ revtstmp BIGINT NOT NULL,
+ rev INT NOT NULL AUTO_INCREMENT,
+ PRIMARY KEY(revtstmp, rev)
+);

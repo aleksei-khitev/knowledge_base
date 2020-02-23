@@ -1,11 +1,19 @@
 package ru.akhitev.kb.spring.envers;
 
+import org.hibernate.envers.AuditReader;
+import org.hibernate.envers.AuditReaderFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.akhitev.kb.spring.envers.conf.DbConf;
+import ru.akhitev.kb.spring.envers.entity.FleetUnit;
+import ru.akhitev.kb.spring.envers.entity.Ship;
 import ru.akhitev.kb.spring.envers.repo.FleetUnitRepo;
+import ru.akhitev.kb.spring.envers.service.ShipService;
+
+import javax.persistence.EntityManagerFactory;
+import java.util.Optional;
 
 public class Launcher {
     private static Logger logger = LoggerFactory.getLogger(Launcher.class);
@@ -13,7 +21,15 @@ public class Launcher {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(DbConf.class);
 
-        FleetUnitRepo repo = context.getBean(FleetUnitRepo.class);
-        logger.info("{}", repo.findAll());
+        ShipService shipService = context.getBean(ShipService.class);
+        Ship ship = new Ship();
+        ship.setType("aaaa");
+        ship.setShipClass("bbbb");
+        ship.setLink("cccc");
+        shipService.save(ship);
+        ship.setShipClass("arrrrv");
+        shipService.save(ship);
+        logger.info("Actual value: {}", shipService.getById(ship.getId()));
+        logger.info("Value of revision 1: {}", shipService.findShipByRevision(ship.getId(), 1));
     }
 }

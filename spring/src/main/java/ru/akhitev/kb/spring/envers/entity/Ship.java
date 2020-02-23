@@ -1,9 +1,12 @@
 package ru.akhitev.kb.spring.envers.entity;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ship")
+@Audited
 public class Ship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
