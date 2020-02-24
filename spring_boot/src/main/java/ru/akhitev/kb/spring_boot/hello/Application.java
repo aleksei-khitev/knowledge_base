@@ -10,7 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 import java.util.Arrays;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = Application.class)
 public class Application {
     private static Logger logger = LoggerFactory.getLogger(Application.class);
 

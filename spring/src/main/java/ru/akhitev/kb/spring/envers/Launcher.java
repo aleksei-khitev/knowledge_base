@@ -1,19 +1,12 @@
 package ru.akhitev.kb.spring.envers;
 
-import org.hibernate.envers.AuditReader;
-import org.hibernate.envers.AuditReaderFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.akhitev.kb.spring.envers.conf.DbConf;
-import ru.akhitev.kb.spring.envers.entity.FleetUnit;
 import ru.akhitev.kb.spring.envers.entity.Ship;
-import ru.akhitev.kb.spring.envers.repo.FleetUnitRepo;
 import ru.akhitev.kb.spring.envers.service.ShipService;
-
-import javax.persistence.EntityManagerFactory;
-import java.util.Optional;
 
 public class Launcher {
     private static Logger logger = LoggerFactory.getLogger(Launcher.class);

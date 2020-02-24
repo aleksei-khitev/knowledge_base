@@ -11,7 +11,7 @@ import ru.akhitev.kb.spring_boot.jdbc.dao.ShipDao;
 import ru.akhitev.kb.spring_boot.jdbc.entity.FleetUnit;
 import ru.akhitev.kb.spring_boot.jdbc.entity.Ship;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = Application.class)
 public class Application {
     private static Logger logger = LoggerFactory.getLogger(Application.class);
 

@@ -14,7 +14,8 @@ ext {
 
     boot = [
             springBootPlugin    : "org.springframework.boot:spring-boot-gradle-plugin:$bootVersion",
-            starterJdbc         : "org.springframework.boot:spring-boot-starter-jdbc:$bootVersion"
+            starterJdbc         : "org.springframework.boot:spring-boot-starter-jdbc:$bootVersion",
+            starterJpa          : "org.springframework.boot:spring-boot-starter-data-jpa:$bootVersion"
     ]
 
     db = [
@@ -27,5 +28,5 @@ repositories {
 }
 
 dependencies {
-    compile boot.starterJdbc, db.h2
+    compile boot.starterJdbc, db.h2, boot.starterJpa
 }
