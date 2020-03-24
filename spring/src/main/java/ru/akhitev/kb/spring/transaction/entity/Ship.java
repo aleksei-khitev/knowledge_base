@@ -1,4 +1,4 @@
-package ru.akhitev.kb.spring.envers.entity;
+package ru.akhitev.kb.spring.transaction.entity;
 
 import javax.persistence.*;
 

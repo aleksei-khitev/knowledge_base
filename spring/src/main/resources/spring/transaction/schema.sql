@@ -53,7 +53,7 @@ CREATE TABLE ship_defence (
 );
 CREATE TABLE weapon (
  id INT NOT NULL AUTO_INCREMENT,
- name VARCHAR(50) NOT NULL,
+ name VARCHAR(250) NOT NULL,
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
 );
@@ -65,7 +65,7 @@ CREATE TABLE ship_weapon (
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
  CONSTRAINT fk_weapon FOREIGN KEY(weapon_id) REFERENCES weapon(id),
- CONSTRAINT fk_ship FOREIGN KEY(ship_id) REFERENCES ship(id)
+ CONSTRAINT fk_ship_1 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
 CREATE TABLE small_aircraft (
  id INT NOT NULL AUTO_INCREMENT,
@@ -81,7 +81,7 @@ CREATE TABLE ship_hanger (
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
  CONSTRAINT fk_small_aircraft FOREIGN KEY(small_aircraft_id) REFERENCES small_aircraft(id),
- CONSTRAINT fk_ship FOREIGN KEY(ship_id) REFERENCES ship(id)
+ CONSTRAINT fk_ship_2 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
 CREATE TABLE landing_deck (
  id INT NOT NULL AUTO_INCREMENT,
@@ -97,7 +97,7 @@ CREATE TABLE ship_landing_deck (
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
  CONSTRAINT fk_landing_deck FOREIGN KEY(landing_deck_id) REFERENCES landing_deck(id),
- CONSTRAINT fk_ship FOREIGN KEY(ship_id) REFERENCES ship(id)
+ CONSTRAINT fk_ship_3 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
 CREATE TABLE command_rank (
  id INT NOT NULL AUTO_INCREMENT,
@@ -110,6 +110,7 @@ CREATE TABLE fleet_unit (
  name VARCHAR(50) NOT NULL UNIQUE,
  minimum_command_rank_id VARCHAR(50),
  version INT NOT NULL DEFAULT 0,
+ comments VARCHAR,
  PRIMARY KEY(id),
  CONSTRAINT fk_command_rank FOREIGN KEY(minimum_command_rank_id) REFERENCES command_rank(id)
 );
@@ -121,7 +122,7 @@ CREATE TABLE fleet_unit_composition_by_ships (
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
  CONSTRAINT fk_fleet_unit FOREIGN KEY(fleet_unit_id) REFERENCES fleet_unit(id),
- CONSTRAINT fk_ship FOREIGN KEY(ship_id) REFERENCES ship(id)
+ CONSTRAINT fk_ship_4 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
 CREATE TABLE fleet_unit_composition_by_fleet_units (
  id INT NOT NULL AUTO_INCREMENT,

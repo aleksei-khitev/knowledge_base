@@ -19,7 +19,7 @@ insert into ship_weapon(ship_id, weapon_id, weapon_count) values(2, 5, 20);
 insert into ship_hanger(ship_id, small_aircraft_id, small_aircraft_count) values(2, 1, 2);
 insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) values(2, 1, 40);
 
-insert into ship(id, type, ship_class, producer, cost, autonomy, link, comment) values(3, 'Эскортный фрегат', 'Небулон-Б II', 'Kuat Drive Yards', mull, 1095, 'http://starforge.info/galactic-empire-ships/nebulon-b2-escort-frigate/', '40+ орудий включая турболазеры. 24 истребителя. Может входить и биться в атмосфере');
+insert into ship(id, type, ship_class, producer, cost, autonomy, link, comment) values(3, 'Эскортный фрегат', 'Небулон-Б II', 'Kuat Drive Yards', null, 1095, 'http://starforge.info/galactic-empire-ships/nebulon-b2-escort-frigate/', '40+ орудий включая турболазеры. 24 истребителя. Может входить и биться в атмосфере');
 insert into ship_size(id, ship_length, ship_width, ship_height) values(3, 250, null, null);
 insert into ship_crew(id, minimal, normal) values(3, 420, 1120);
 insert into ship_speed(id, space_speed, atmosphere_speed, main_hyper_drive_class, backup_hyper_drive_class) values(3, 40, 800, 2, 12);
@@ -118,7 +118,6 @@ insert into ship_weapon(ship_id, weapon_id, weapon_count) values(11, 14, 15);
 insert into ship_weapon(ship_id, weapon_id, weapon_count) values(11, 21, 15);
 insert into ship_weapon(ship_id, weapon_id, weapon_count) values(11, 11, 16);
 insert into ship_weapon(ship_id, weapon_id, weapon_count) values(11, 8, 12);
-insert into ship_hanger(ship_id, small_aircraft_id, small_aircraft_count) values(11, 1, null);
 insert into ship_hanger(ship_id, small_aircraft_id, small_aircraft_count) values(11, 2, 144);
 insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) values(11, 1, 14000);
 
@@ -200,3 +199,11 @@ insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) valu
 insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) values(16, 8, 3);
 insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) values(16, 6, 30);
 insert into ship_landing_deck(ship_id, landing_deck_id, landing_deck_count) values(16, 7, 50);
+
+insert into ship(id, type, ship_class, producer, cost, autonomy, link) values(17, 'Осадный корабль', 'Торпедная Сфера', 'Loronar Corporation  ', 327830000, 2190, 'http://starforge.info/space-station/torpedo-sphere/');
+insert into ship_size(id, ship_length, ship_width, ship_height) values(17, 1900, 1900, 1900);
+insert into ship_crew(id, minimal, normal) values(17, 20415 , 63275);
+insert into ship_speed(id, space_speed, atmosphere_speed, main_hyper_drive_class, backup_hyper_drive_class) values(17, 20, null, 3, 18);
+insert into ship_defence(id, shields, hp, dr, damage_threshold) values(17, 100, 3000, 20, 512);
+insert into ship_weapon(ship_id, weapon_id, weapon_count) values(17, 12, 10);
+insert into ship_weapon(ship_id, weapon_id, weapon_count) values(17, 3, 500);
