@@ -19,15 +19,17 @@ insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) 
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(5, 'Тяжелая ударная линия v1', 1, 'Победа или Империал мог считаться ТУЛом');
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(5, 15, 1);
+insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(5, 2, 2);
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(13, 'Тяжелая ударная линия v2', 1, '4-8 кораблей не ниже легкого крейсера');
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(13, 9, 1);
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(13, 10, 1);
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(13, 7, 2);
-insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(13, 6, 4);
+insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(13, 5, 4);
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(20, 'Тяжелая ударная линия v3', 1, 'Победа или Империал мог считаться ТУЛом');
-insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(5, 14, 1);
+insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(20, 14, 1);
+insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(20, 2, 2);
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(14, 'Торпедная линия', 1, 'Задачи: уничтожения планетарных генераторов защитного поля; проведения орбитальной бомбардировки');
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(14, 17, 2);
@@ -84,7 +86,7 @@ insert into fleet_unit_composition_by_fleet_units(parent_fleet_unit_id, child_fl
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(19, 'Ударная флотская группировка', 3, 'Задача: обеспечение полного отсутствия враждебных кораблей в орбитальном пространстве контролируемых миров и прекращение их деятельности во всей системе');
 insert into fleet_unit_composition_by_fleet_units(parent_fleet_unit_id, child_fleet_unit_id, fleet_unit_count) values(19, 16, 3);
-insert into fleet_unit_composition_by_fleet_units(parent_fleet_unit_id, child_fleet_unit_id, fleet_unit_count) values(19, 1, 2);
+insert into fleet_unit_composition_by_fleet_units(parent_fleet_unit_id, child_fleet_unit_id, fleet_unit_count) values(19, 8, 2);
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(22, 'Транспортная флотская группировка', 3, 'Осуществление стратегической десантной операции против хорошо вооруженного и многочисленного противника окопавшегося на поверхности планеты');
 insert into fleet_unit_composition_by_fleet_units(parent_fleet_unit_id, child_fleet_unit_id, fleet_unit_count) values(22, 21, 1);

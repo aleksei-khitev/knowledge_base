@@ -59,6 +59,6 @@ public class FleetUnitCompositionByShips {
 
     @Override
     public String toString() {
-        return shipCount + " единиц класса " + ship;
+        return shipCount + " x " + ship.getShipClass();
     }
 }

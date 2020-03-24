@@ -59,6 +59,6 @@ public class FleetUnitCompositionByFleetUnits {
 
     @Override
     public String toString() {
-        return fleetUnitCount + " единиц флота типа " + childFleetUnit;
+        return  fleetUnitCount + " x " + childFleetUnit;
     }
 }
