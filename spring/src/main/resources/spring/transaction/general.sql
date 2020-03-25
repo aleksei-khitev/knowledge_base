@@ -33,20 +33,20 @@ insert into weapon(id, name) values(25, 'Восьмирённый турбола
 insert into weapon(id, name) values(26, 'Скорострельна лёгкая лазерная пушка');
 insert into weapon(id, name) values(27, 'Двуствольная лёгкая лазерная пушка');
 
-insert into small_aircraft(id, name) values(1, 'Челнок');
-insert into small_aircraft(id, name) values(2, 'Истребитель');
-insert into small_aircraft(id, name) values(3, 'LAAT');
-insert into small_aircraft(id, name) values(4, 'Десантный транспорт');
-insert into small_aircraft(id, name) values(5, 'Штурмовой транспорт');
-insert into small_aircraft(id, name) values(6, 'Ударная канонерка Xg-1 (Assault Gunboat)');
-insert into small_aircraft(id, name) values(7, 'Штурмовой челнок типа Гамма');
+insert into small_aircraft(id, name, crew) values(1, 'Челнок', 2);
+insert into small_aircraft(id, name, crew) values(2, 'Истребитель', 1);
+insert into small_aircraft(id, name, crew, link) values(3, 'LAAT', 2, 'http://starforge.info/old-republic-ships/laati/');
+insert into small_aircraft(id, name, crew) values(4, 'Десантный транспорт', 2);
+insert into small_aircraft(id, name, crew) values(5, 'Штурмовой транспорт', 2);
+insert into small_aircraft(id, name, crew, link) values(6, 'Ударная канонерка Xg-1', 1, 'http://starforge.info/galactic-empire-ships/assault-gunboat-xg-1/');
+insert into small_aircraft(id, name, crew, link) values(7, 'Штурмовой челнок типа Гамма', 1, 'http://starforge.info/galactic-empire-ships/gamma-class-assault-shuttle/');
 
-insert into land_force(id, name) values(1, 'Солдат');
-insert into land_force(id, name) values(2, 'AT-TE');
-insert into land_force(id, name) values(3, 'Самоходная тяжелая артилерия SPHA');
-insert into land_force(id, name) values(4, 'Мотоспидер');
-insert into land_force(id, name) values(5, 'Штурмовик');
-insert into land_force(id, name) values(6, 'AT-AT');
-insert into land_force(id, name) values(7, 'AT-ST');
-insert into land_force(id, name) values(8, 'База быстрого развертывания');
+insert into land_force(id, name, crew) values(1, 'Солдат', 1);
+insert into land_force(id, name, crew, link) values(2, 'AT-TE', 7, 'http://starforge.info/old-republic-tech/at-te/');
+insert into land_force(id, name, crew, link) values(3, 'Самоходная тяжелая артилерия SPHA', 25, 'http://starforge.info/old-republic-tech/spha/');
+insert into land_force(id, name, crew) values(4, 'Мотоспидер', 1);
+insert into land_force(id, name, crew) values(5, 'Штурмовик', 1);
+insert into land_force(id, name, crew, link) values(6, 'AT-AT', 3, 'http://starforge.info/galactic-empire-tech/all-terrain-armored-transport-at-at/');
+insert into land_force(id, name, crew, link) values(7, 'AT-ST', 2, 'http://starforge.info/galactic-empire-tech/at-st/');
+insert into land_force(id, name, crew, link) values(8, 'База быстрого развертывания', 950, 'http://starforge.info/galactic-empire-tech/pre-fabricated-garrison-base/');
 

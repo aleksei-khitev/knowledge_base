@@ -33,8 +33,18 @@ class ReportService {
                         .append(landForcesWithCounts.entrySet().stream().map(e -> e.getValue() + " x " + e.getKey()).collect(Collectors.joining("\n")));
             }
             reportBuilder.append("\n-------\nОбщая стоимость единицы флота (без учета техники и летательных аппаратах)\n").append(cost(shipCounts));
-            reportBuilder.append("\n-------\nПримерная численность экипажа (без учета пилотов, солдат). У некоторых кораблей нет данных по ней\n").append("минимальная ").append(minimalCrew(shipCounts))
-            .append("\n").append("полноценная ").append(normalCrew(shipCounts));
+
+            Long minimalCrew = minimalCrew(shipCounts);
+            Long normalCrew = normalCrew(shipCounts);
+            Long landingSoldiersAndCrew = landingSoldiersAndCrew(landForcesWithCounts);
+            Long smallAircraftCrew = smallAircraftCrew(shipCounts);
+            reportBuilder.append("\n-------\nПримерная численность экипажа. У некоторых кораблей нет данных по ней\n")
+                    .append("Минимальная: ").append(minimalCrew + smallAircraftCrew).append(" (минмимальный экипаж кораблей и пилоты)\n")
+                    .append("Полноценная: ").append(normalCrew + smallAircraftCrew + landingSoldiersAndCrew).append(" (нормальный экипаж кораблей, пилоты, сухопутные силы)\n")
+                    .append("минимальная (без учета пилотов, солдат) ").append(minimalCrew)
+            .append("\nполноценная (без учета пилотов, солдат) ").append(normalCrew)
+            .append("\nсолдаты, штурмовики, персонал наземных сил ").append(landingSoldiersAndCrew)
+            .append("\nпилоты летательных аппаратов ").append(smallAircraftCrew);
             reportBuilder.append("\n-------\nИнформация о классах кораблей\n").append(shipCounts.keySet().stream().map(Ship::toMultiLineString).collect(Collectors.joining("\n\n")));
         }
         return reportBuilder.toString();
@@ -107,4 +117,25 @@ class ReportService {
         }
         return crew;
     }
+
+    private Long landingSoldiersAndCrew(Map<LandForce, Integer> landForcesWithCounts) {
+        Long crew = 0L;
+        for (Map.Entry<LandForce, Integer> entry : landForcesWithCounts.entrySet()) {
+            if (entry.getKey().getCrew() != null) {
+                crew = crew + (entry.getKey().getCrew() * entry.getValue());
+            }
+        }
+        return crew;
+    }
+
+    private Long smallAircraftCrew(Map<Ship, Integer> shipsWithCounts) {
+        Long crew = 0L;
+        for (Map.Entry<Ship, Integer> entry : shipsWithCounts.entrySet()) {
+            for (ShipHangar hangar : entry.getKey().getHangar()) {
+                crew = crew + (hangar.getSmallAircraft().getCrew() * hangar.getAircraftCount() * entry.getValue());
+            }
+        }
+        return crew;
+    }
+
 }

@@ -70,6 +70,8 @@ CREATE TABLE ship_weapon (
 CREATE TABLE small_aircraft (
  id INT NOT NULL AUTO_INCREMENT,
  name VARCHAR(50) NOT NULL,
+ crew INT,
+ link VARCHAR(250),
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
 );
@@ -86,6 +88,8 @@ CREATE TABLE ship_hanger (
 CREATE TABLE land_force (
  id INT NOT NULL AUTO_INCREMENT,
  name VARCHAR(50) NOT NULL,
+ crew INT,
+ link VARCHAR(250),
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
 );

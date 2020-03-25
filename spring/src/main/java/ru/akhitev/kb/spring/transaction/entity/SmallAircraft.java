@@ -13,6 +13,12 @@ public class SmallAircraft {
     @Column
     private String name;
 
+    @Column
+    private Integer crew;
+
+    @Column
+    private String link;
+
     @Version
     @Column(name = "version")
     private int version;
@@ -31,6 +37,22 @@ public class SmallAircraft {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getCrew() {
+        return crew;
+    }
+
+    public void setCrew(Integer crew) {
+        this.crew = crew;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
