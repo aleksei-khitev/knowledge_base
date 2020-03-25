@@ -30,7 +30,7 @@ public class ShipsCounterTask extends RecursiveTask<Map<Ship, Integer>> {
         Set<FleetUnitCompositionByFleetUnits> units = fleetUnit.getCompositionByFleetUnits();
         if (units != null && units.size() > 0) {
             List<ShipsCounterTask> tasks = new ArrayList<>();
-            units.forEach(unitComposition -> tasks.add(new ShipsCounterTask(unitComposition.childFleetUnit, unitComposition.fleetUnitCount)));
+            units.forEach(unitComposition -> tasks.add(new ShipsCounterTask(unitComposition.getChildFleetUnit(), unitComposition.getFleetUnitCount())));
             tasks.forEach(ShipsCounterTask::fork);
             for (ShipsCounterTask task : tasks) {
                 Map<Ship, Integer> shipsFromSubUnit = task.join();

@@ -19,37 +19,37 @@ CREATE TABLE ship (
  PRIMARY KEY(id),
 );
 CREATE TABLE ship_size (
- id INT NOT NULL AUTO_INCREMENT,
+ ship_id INT NOT NULL,
  ship_length INT,
  ship_width INT,
  ship_height INT,
  version INT NOT NULL DEFAULT 0,
- PRIMARY KEY(id),
+ PRIMARY KEY(ship_id),
 );
 CREATE TABLE ship_crew (
- id INT NOT NULL AUTO_INCREMENT,
+ ship_id INT NOT NULL,
  minimal INT,
  normal INT,
  version INT NOT NULL DEFAULT 0,
- PRIMARY KEY(id),
+ PRIMARY KEY(ship_id),
 );
 CREATE TABLE ship_speed (
- id INT NOT NULL AUTO_INCREMENT,
+ ship_id INT NOT NULL,
  space_speed INT,
  atmosphere_speed INT,
  main_hyper_drive_class INT,
  backup_hyper_drive_class INT,
  version INT NOT NULL DEFAULT 0,
- PRIMARY KEY(id),
+ PRIMARY KEY(ship_id),
 );
 CREATE TABLE ship_defence (
- id INT NOT NULL AUTO_INCREMENT,
+ ship_id INT NOT NULL,
  shields INT,
  hp INT,
  dr INT,
  damage_threshold INT,
  version INT NOT NULL DEFAULT 0,
- PRIMARY KEY(id),
+ PRIMARY KEY(ship_id),
 );
 CREATE TABLE weapon (
  id INT NOT NULL AUTO_INCREMENT,
@@ -83,7 +83,7 @@ CREATE TABLE ship_hanger (
  CONSTRAINT fk_small_aircraft FOREIGN KEY(small_aircraft_id) REFERENCES small_aircraft(id),
  CONSTRAINT fk_ship_2 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
-CREATE TABLE landing_deck (
+CREATE TABLE land_force (
  id INT NOT NULL AUTO_INCREMENT,
  name VARCHAR(50) NOT NULL,
  version INT NOT NULL DEFAULT 0,
@@ -92,11 +92,11 @@ CREATE TABLE landing_deck (
 CREATE TABLE ship_landing_deck (
  id INT NOT NULL AUTO_INCREMENT,
  ship_id INT NOT NULL,
- landing_deck_id INT NOT NULL,
+ land_force_id INT NOT NULL,
  landing_deck_count INT NOT NULL,
  version INT NOT NULL DEFAULT 0,
  PRIMARY KEY(id),
- CONSTRAINT fk_landing_deck FOREIGN KEY(landing_deck_id) REFERENCES landing_deck(id),
+ CONSTRAINT fk_landing_deck FOREIGN KEY(land_force_id) REFERENCES land_force(id),
  CONSTRAINT fk_ship_3 FOREIGN KEY(ship_id) REFERENCES ship(id)
 );
 CREATE TABLE command_rank (

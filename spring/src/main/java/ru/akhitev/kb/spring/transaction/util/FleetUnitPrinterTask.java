@@ -31,7 +31,7 @@ public class FleetUnitPrinterTask extends RecursiveTask<String> {
         if (units != null && units.size() > 0) {
             List<FleetUnitPrinterTask> tasks = new ArrayList<>();
             units.forEach(unitComposition ->
-                    tasks.add(new FleetUnitPrinterTask(unitComposition.getChildFleetUnit(), spaces + INDENT, unitComposition.fleetUnitCount)));
+                    tasks.add(new FleetUnitPrinterTask(unitComposition.getChildFleetUnit(), spaces + INDENT, unitComposition.getFleetUnitCount())));
             tasks.forEach(FleetUnitPrinterTask::fork);
             result.append(tasks.stream().map(ForkJoinTask::join).collect(Collectors.joining("\n")));
         }

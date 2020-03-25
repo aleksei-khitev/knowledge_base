@@ -13,17 +13,19 @@ import java.util.Optional;
 public class FleetService {
     private static Logger logger = LoggerFactory.getLogger(FleetService.class);
     private FleetUnitRepo fleetUnitRepo;
+    private ReportService reportService;
 
     @Autowired
-    public FleetService(FleetUnitRepo fleetUnitRepo) {
+    public FleetService(FleetUnitRepo fleetUnitRepo, ReportService reportService) {
         this.fleetUnitRepo = fleetUnitRepo;
+        this.reportService = reportService;
     }
 
     public void listAllFleets() {
         fleetUnitRepo.findAll().forEach(unit -> logger.info(unit.toString()));
     }
 
-    public Optional<FleetUnit> fleetUnitById(Long id) {
-        return fleetUnitRepo.findById(id);
+    public String prepareReportForFleetUnitById(Long id) {
+        return reportService.prepare(fleetUnitRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Такая единица флота не найдена", null)));
     }
 }

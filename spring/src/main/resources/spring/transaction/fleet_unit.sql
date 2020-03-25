@@ -8,7 +8,7 @@ insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) 
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(2, 'Разведывательная линия', 1, '4-8 кораблей. Легкие крейсеры, фрегаты, сец. модификации. Задачи: обнаружение кораблей или баз противника и наведении на них УЛ или ТУЛ; Если же противник начинал атаку РЛ, отходить, не вступая в бой');
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(2, 3, 2);
-insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(2, 4, 6);
+insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(2, 18, 6);
 
 insert into fleet_unit(id, name, minimum_command_rank_id, comments) values(3, 'Разведывательно-ударная линия', 1, '4-20 корветов. Задачи: преследование, перехват и уничтожение легких вражеских кораблей и судов, а также групп МЛА (истребителей и бомбардировщиков) в различных тактических ситуациях');
 insert into fleet_unit_composition_by_ships(fleet_unit_id, ship_id, ship_count) values(3, 1, 20);

@@ -3,23 +3,23 @@ package ru.akhitev.kb.spring.transaction.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "fleet_unit_composition_by_ships")
-public class FleetUnitCompositionByShips {
+@Table(name = "ship_landing_deck")
+public class ShipLandingDeck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "fleet_unit_id", insertable = false, updatable = false)
-    private FleetUnit fleetUnit;
-
-    @ManyToOne
     @JoinColumn(name = "ship_id", insertable = false, updatable = false)
     private Ship ship;
 
-    @Column(name = "ship_count")
-    private Integer shipCount;
+    @ManyToOne
+    @JoinColumn(name = "land_force_id", insertable = false, updatable = false)
+    private LandForce landForce;
+
+    @Column(name = "landing_deck_count")
+    private Integer landForceCount;
 
     @Version
     @Column(name = "version")
@@ -33,14 +33,6 @@ public class FleetUnitCompositionByShips {
         this.id = id;
     }
 
-    public FleetUnit getFleetUnit() {
-        return fleetUnit;
-    }
-
-    public void setFleetUnit(FleetUnit fleetUnit) {
-        this.fleetUnit = fleetUnit;
-    }
-
     public Ship getShip() {
         return ship;
     }
@@ -49,16 +41,24 @@ public class FleetUnitCompositionByShips {
         this.ship = ship;
     }
 
-    public Integer getShipCount() {
-        return shipCount;
+    public LandForce getLandForce() {
+        return landForce;
     }
 
-    public void setShipCount(Integer shipCount) {
-        this.shipCount = shipCount;
+    public void setLandForce(LandForce landForce) {
+        this.landForce = landForce;
+    }
+
+    public Integer getLandForceCount() {
+        return landForceCount;
+    }
+
+    public void setLandForceCount(Integer landForceCount) {
+        this.landForceCount = landForceCount;
     }
 
     @Override
     public String toString() {
-        return shipCount + " x " + ship.getShipClass();
+        return landForce + " x " + landForceCount;
     }
 }

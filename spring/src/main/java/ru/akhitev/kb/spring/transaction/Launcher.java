@@ -12,6 +12,6 @@ public class Launcher {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(DbConf.class);
         FleetService fleetService = context.getBean(FleetService.class);
-        fleetService.fleetUnitById(11L).ifPresent(unit -> logger.info(unit.toMultiLineString()));
+        logger.info(fleetService.prepareReportForFleetUnitById(26L));
     }
 }

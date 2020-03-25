@@ -26,6 +26,9 @@ public class FleetUnit {
     @JoinColumn(name = "minimum_command_rank_id")
     private CommandRank minimumCommandRank;
 
+    @Column
+    private String comments;
+
     @OneToMany(mappedBy = "fleetUnit",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -72,6 +75,14 @@ public class FleetUnit {
         this.minimumCommandRank = minimumCommandRank;
     }
 
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
     public Set<FleetUnitCompositionByShips> getCompositionByShips() {
         return compositionByShips;
     }
@@ -94,29 +105,5 @@ public class FleetUnit {
                 + ((compositionByFleetUnits !=null && compositionByFleetUnits.size() > 0)?"ед. флота: " + compositionByFleetUnits:"" )
                 + ((compositionByShips !=null && compositionByShips.size() > 0)?"корабли: " + compositionByShips:"" )
                 + "}";
-    }
-
-    public String toMultiLineString() {
-        StringBuilder result = new StringBuilder();
-        /*result.append("Состав единицы: ").append(name).append("\n========");
-        if (compositionByFleetUnits !=null && compositionByFleetUnits.size() > 0) {
-            result.append("\nЕДИНИЦЫ ФЛОТА:\n");
-            result.append(compositionByFleetUnits.stream().map(FleetUnitCompositionByFleetUnits::toString).collect(Collectors.joining("\n")));
-        }
-        if (compositionByShips !=null && compositionByShips.size() > 0) {
-            result.append("\nКОРАБЛИ:\n");
-            result.append(compositionByShips.stream().map(FleetUnitCompositionByShips::toString).collect(Collectors.joining("\n")));
-        }*/
-        String units = new ForkJoinPool().invoke(new FleetUnitPrinterTask(this, "", 1));
-        if (units != null) {
-            result.append("\n-------\nСостав флота\n").append(units);
-        }
-        Map<Ship, Integer> shipCounts = new ForkJoinPool().invoke(new ShipsCounterTask(this, 1));
-        if (shipCounts != null && shipCounts.size() > 0) {
-            result.append("\n-------\nВсего кораблей в единице флота\n")
-                    .append(shipCounts.entrySet().stream().map(e -> e.getValue() + " x " + e.getKey()).collect(Collectors.joining("\n")));
-        }
-
-        return result.toString();
     }
 }

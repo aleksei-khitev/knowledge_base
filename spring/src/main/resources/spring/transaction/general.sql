@@ -31,6 +31,7 @@ insert into weapon(id, name) values(23, 'Тяжёлая ионная пушка'
 insert into weapon(id, name) values(24, 'Многоствольный тяжёлый турболазер');
 insert into weapon(id, name) values(25, 'Восьмирённый турболазер');
 insert into weapon(id, name) values(26, 'Скорострельна лёгкая лазерная пушка');
+insert into weapon(id, name) values(27, 'Двуствольная лёгкая лазерная пушка');
 
 insert into small_aircraft(id, name) values(1, 'Челнок');
 insert into small_aircraft(id, name) values(2, 'Истребитель');
@@ -40,12 +41,12 @@ insert into small_aircraft(id, name) values(5, 'Штурмовой трансп�
 insert into small_aircraft(id, name) values(6, 'Ударная канонерка Xg-1 (Assault Gunboat)');
 insert into small_aircraft(id, name) values(7, 'Штурмовой челнок типа Гамма');
 
-insert into landing_deck(id, name) values(1, 'Солдат');
-insert into landing_deck(id, name) values(2, 'AT-TE');
-insert into landing_deck(id, name) values(3, 'Самоходная тяжелая артилерия SPHA');
-insert into landing_deck(id, name) values(4, 'Мотоспидер');
-insert into landing_deck(id, name) values(5, 'Штурмовик');
-insert into landing_deck(id, name) values(6, 'AT-AT');
-insert into landing_deck(id, name) values(7, 'AT-ST');
-insert into landing_deck(id, name) values(8, 'База быстрого развертывания');
+insert into land_force(id, name) values(1, 'Солдат');
+insert into land_force(id, name) values(2, 'AT-TE');
+insert into land_force(id, name) values(3, 'Самоходная тяжелая артилерия SPHA');
+insert into land_force(id, name) values(4, 'Мотоспидер');
+insert into land_force(id, name) values(5, 'Штурмовик');
+insert into land_force(id, name) values(6, 'AT-AT');
+insert into land_force(id, name) values(7, 'AT-ST');
+insert into land_force(id, name) values(8, 'База быстрого развертывания');
 

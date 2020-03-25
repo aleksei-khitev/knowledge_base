@@ -12,14 +12,14 @@ public class FleetUnitCompositionByFleetUnits {
 
     @ManyToOne
     @JoinColumn(name = "parent_fleet_unit_id", insertable = false, updatable = false)
-    public FleetUnit parentFleetUnit;
+    private FleetUnit parentFleetUnit;
 
     @ManyToOne
     @JoinColumn(name = "child_fleet_unit_id", insertable = false, updatable = false)
-    public FleetUnit childFleetUnit;
+    private FleetUnit childFleetUnit;
 
     @Column(name = "fleet_unit_count")
-    public Integer fleetUnitCount;
+    private Integer fleetUnitCount;
 
     @Version
     @Column(name = "version")
