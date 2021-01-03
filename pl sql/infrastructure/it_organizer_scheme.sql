@@ -19,25 +19,31 @@ CREATE TABLE Note (
     FOREIGN KEY(project_id) REFERENCES Project(id)
 );
 
--- TODO: link priorities to Project
 CREATE TABLE Task_Priority (
+    id INTEGER NOT NULL PRIMARY KEY,
+    project_id INTEGER NOT NULL,
+    name VARCHAR(100),
+    FOREIGN KEY(project_id) REFERENCES Project(id)
+);
+
+CREATE TABLE Task_Statuses (
     id INTEGER NOT NULL PRIMARY KEY,
     name VARCHAR(100)
 );
 
--- TODO: add estimations
--- TODO: add due date
--- TODO: add table for statuses
 CREATE TABLE Task (
-    id INTEGER NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     project_id INTEGER NOT NULL,
     name VARCHAR(100),
     priority_id INTEGER,
     workspace VARCHAR(100),
     useful_info VARCHAR(100),
-    status VARCHAR(100) NOT NULL,
+    estimation INTEGER,
+    due_date TIMESTAMP,
+    status_id INTEGER NOT NULL,
     FOREIGN KEY(project_id) REFERENCES Project(id),
-    FOREIGN KEY(priority_id) REFERENCES Task_Priority(id)
+    FOREIGN KEY(priority_id) REFERENCES Task_Priority(id),
+    FOREIGN KEY(status_id) REFERENCES Task_Statuses(id)
 );
 
 CREATE TABLE Task_Link_Type (
