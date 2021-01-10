@@ -3,7 +3,7 @@
 SET PAGESIZE 999
 
 -- Ширина выводимой строки в символах
-SET LINESIZE 132
+SET LINESIZE 250
 
 -- Включение вывода сообщений DBMS_OUTPUT.
 -- В версиях, предшествующих Oracle Database 10g Release 2,
