@@ -21,4 +21,3 @@ END calculate_bonus;
 /
 
 EXECUTE calculate_bonus(94, 100);
-EXECUTE calculate_bonus(96, 100);
