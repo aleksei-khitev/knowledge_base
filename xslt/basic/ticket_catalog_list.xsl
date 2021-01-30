@@ -27,6 +27,7 @@
                         <th>Priority</th>
                     </tr>
                     <xsl:for-each select="project/tickets/ticket[priority='P2']|project/tickets/ticket[priority='P3']">
+                        <xsl:sort select="priority"/>
                         <tr>
                             <td><xsl:value-of select="key"/></td>
                             <td><xsl:value-of select="name"/></td>
