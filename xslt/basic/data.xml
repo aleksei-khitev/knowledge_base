@@ -8,6 +8,7 @@
             <key>SP-123</key>
             <name>Java 11 Migration</name>
             <priority>P3</priority>
+            <due_date>03.03.2021</due_date>
         </ticket>
         <ticket>
             <key>SP-145</key>
