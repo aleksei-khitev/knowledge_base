@@ -7,18 +7,25 @@
             <body>
                 <h1><xsl:value-of select="project/name"/></h1>
                 <h2>Blockers</h2>
-                <table border="1">
-                    <tr bgcolor="#9acd32">
-                        <th>Key</th>
-                        <th>Name</th>
-                    </tr>
-                    <xsl:for-each select="project/tickets/ticket[priority='P1']">
-                        <tr>
-                            <td><xsl:value-of select="key"/></td>
-                            <td><xsl:value-of select="name"/></td>
-                        </tr>
-                    </xsl:for-each>
-                </table>
+                <xsl:choose>
+                    <xsl:when test="project/tickets/ticket[priority='P1'] != ''">
+                        <table border="1">
+                            <tr bgcolor="#9acd32">
+                                <th>Key</th>
+                                <th>Name</th>
+                            </tr>
+                            <xsl:for-each select="project/tickets/ticket[priority='P1']">
+                                <tr>
+                                    <td><xsl:value-of select="key"/></td>
+                                    <td><xsl:value-of select="name"/></td>
+                                </tr>
+                            </xsl:for-each>
+                        </table>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        No blockers
+                    </xsl:otherwise>
+                </xsl:choose>
                 <h2>Other Tickets</h2>
                 <table border="1">
                     <tr bgcolor="#9acd32">
