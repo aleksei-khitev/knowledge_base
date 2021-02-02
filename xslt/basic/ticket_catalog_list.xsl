@@ -13,11 +13,13 @@
                             <tr bgcolor="#9acd32">
                                 <th>Key</th>
                                 <th>Name</th>
+                                <th>Due Date</th>
                             </tr>
                             <xsl:for-each select="project/tickets/ticket[priority='P1']">
                                 <tr>
-                                    <td><xsl:value-of select="key"/></td>
-                                    <td><xsl:value-of select="name"/></td>
+                                    <td><xsl:apply-templates select="key"/></td>
+                                    <td><xsl:apply-templates select="name"/></td>
+                                    <td><xsl:apply-templates select="due_date"/></td>
                                 </tr>
                             </xsl:for-each>
                         </table>
@@ -37,19 +39,33 @@
                     <xsl:for-each select="project/tickets/ticket[priority='P2']|project/tickets/ticket[priority='P3']">
                         <xsl:sort select="priority"/>
                         <tr>
-                            <td><xsl:value-of select="key"/></td>
-                            <td><xsl:value-of select="name"/></td>
-                            <td><xsl:value-of select="priority"/></td>
-                            <td>
-                                <xsl:if test="due_date != ''">
-                                    <xsl:value-of select="due_date"/>
-                                </xsl:if>
-                            </td>
+                            <td><xsl:apply-templates select="key"/></td>
+                            <td><xsl:apply-templates select="name"/></td>
+                            <td><xsl:apply-templates select="priority"/></td>
+                            <td><xsl:apply-templates select="due_date"/></td>
                         </tr>
                     </xsl:for-each>
                 </table>
             </body>
         </html>
+    </xsl:template>
+
+    <xsl:template match="key">
+        <xsl:value-of select="."/>
+    </xsl:template>
+
+    <xsl:template match="name">
+        <span style="font-weight: bold"><xsl:value-of select="."/></span>
+    </xsl:template>
+
+    <xsl:template match="priority">
+        <span style="color:#ff0000"><xsl:value-of select="."/></span>
+    </xsl:template>
+
+    <xsl:template match="due_date">
+        <xsl:if test=". != ''">
+            <xsl:value-of select="."/>
+        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>
