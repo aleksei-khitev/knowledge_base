@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="xslt_and_xpath_evaluation.js"></script>
+    <script>
+        function displayResult() {
+            xml = loadXMLDoc("../basic/data.xml");
+            xsl = loadXMLDoc("../basic/ticket_catalog_list.xsl");
+            displayXsltResult(xml, xsl);
+            displayXPathResult("../basic/data.xml", "/project")
+        }
+    </script>
+</head>
+<body onload="displayResult()">
+    <div id="xsltResult"></div>
+    <p id="xPathResult"/>
+</body>
+</html>
