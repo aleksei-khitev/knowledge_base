@@ -6,14 +6,9 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <script src="lib/angular/angular.js"></script>
     <script src="app.js"></script>
+    <script src="statuses.component.js"></script>
   </head>
-  <body ng-controller="StatusesController">
-    <h1>Statuses</h1>
-    <ul>
-      <li ng-repeat="status in statuses">
-        <span>{{status.name}}</span>
-        <p>{{status.status}}</p>
-      </li>
-    </ul>
+  <body>
+  <statuses-list></statuses-list>
   </body>
 </html>
