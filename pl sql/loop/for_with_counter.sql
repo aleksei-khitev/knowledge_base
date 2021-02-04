@@ -18,4 +18,4 @@ BEGIN
 END;
 /
 
-EXEC simple_counter(1, 10)
+EXEC simple_counter(1, 5)

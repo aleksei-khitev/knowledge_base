@@ -1,3 +1,5 @@
+var xmlFilePath = "../xslt/data.xml";
+
 function loadXMLDoc(filename) {
     xhttp = new XMLHttpRequest();
     xhttp.open("GET", filename, false);
@@ -5,7 +7,9 @@ function loadXMLDoc(filename) {
     return xhttp.responseXML;
 }
 
-function displayXsltResult(xml, xsl) {
+function displayXsltResult(xslFilePath) {
+    var xml = loadXMLDoc("../xslt/data.xml");
+    var xsl = loadXMLDoc(xslFilePath);
     if (document.implementation && document.implementation.createDocument){
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xsl);
@@ -14,15 +18,15 @@ function displayXsltResult(xml, xsl) {
     }
 }
 
-function displayXPathResult(xmlFilePath, xPath) {
+function displayXPathResult(xPath) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var titleTextNode = document.createTextNode("XPath: " + xPath + "\n======");
-            document.getElementById("xPathResult").appendChild(titleTextNode);
+            document.getElementById("xsltResult").appendChild(titleTextNode);
             var evaluatedXPath = evaluateXPath(xhttp.responseXML, xPath);
             var resultTextNode = document.createTextNode(evaluatedXPath + "=====\n");
-            document.getElementById("xPathResult").appendChild(resultTextNode);
+            document.getElementById("xsltResult").appendChild(resultTextNode);
             document.body.style = "white-space: pre;"
         }
     };
@@ -32,17 +36,13 @@ function displayXPathResult(xmlFilePath, xPath) {
 
 function evaluateXPath(xmlResponse, xPath) {
     var txt = "";
-    if (xml.evaluate) {
-        var iterator = xml.evaluate(xPath, xml, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
+    if (xmlResponse.evaluate) {
+        var iterator = xmlResponse.evaluate(xPath, xmlResponse, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
         var thisNode = iterator.iterateNext();
         while (thisNode) {
             txt += thisNode.textContent;
             thisNode = iterator.iterateNext();
         }
-        /*while (result) {
-            txt += result.childNodes[0].nodeValue;
-            result = nodes.iterateNext();
-        }*/
     }
     return txt;
 }
