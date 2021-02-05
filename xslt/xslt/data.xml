@@ -4,20 +4,20 @@
     <id>1</id>
     <name>IT Organizer</name>
     <tickets>
-        <ticket>
+        <ticket db_id="1">
             <key>SP-123</key>
             <name>Java 11 Migration</name>
             <priority>P3</priority>
             <estimation>16</estimation>
             <due_date>03.03.2021</due_date>
         </ticket>
-        <ticket>
+        <ticket db_id="2">
             <key>SP-145</key>
             <name>Docker Compose Introduction</name>
             <priority>P1</priority>
             <estimation>4</estimation>
         </ticket>
-        <ticket>
+        <ticket db_id="3">
             <key>SP-198</key>
             <name>logs Investigation</name>
             <priority>P2</priority>

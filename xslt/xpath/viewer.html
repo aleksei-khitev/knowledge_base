@@ -7,6 +7,14 @@
         <button type="button" onclick="displayXsltResult('../xslt/ticket_catalog_list.xsl');">Show XSLT Result</button><br/>
         <button type="button" onclick="displayXPathResult('/project')">Show '/project' XPath Result</button><br/>
         <button type="button" onclick="displayXPathResult('project')">Show 'project' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[1]')">Show '/project/tickets/ticket[1]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[last()]')">Show '/project/tickets/ticket[last()]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[last()-1]')">Show '/project/tickets/ticket[last() - 1]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[position()<3]')">Show '/project/tickets/ticket[position() < 3]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[@db_id]')">Show '/project/tickets/ticket[@db_id]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[@db_id=2]')">Show '/project/tickets/ticket[@db_id=2]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[estimation>2]')">Show '/project/tickets/ticket[estimation>2]' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket[estimation>2]/name')">Show '/project/tickets/ticket[estimation>2]/name' XPath Result</button><br/>
         <div id="xsltResult"></div>
         <p id="xPathResult"/>
     </body>
