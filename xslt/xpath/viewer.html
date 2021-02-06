@@ -15,6 +15,8 @@
         <button type="button" onclick="displayXPathResult('/project/tickets/ticket[@db_id=2]')">Show '/project/tickets/ticket[@db_id=2]' XPath Result</button><br/>
         <button type="button" onclick="displayXPathResult('/project/tickets/ticket[estimation>2]')">Show '/project/tickets/ticket[estimation>2]' XPath Result</button><br/>
         <button type="button" onclick="displayXPathResult('/project/tickets/ticket[estimation>2]/name')">Show '/project/tickets/ticket[estimation>2]/name' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/node()')">Show '/project/node()' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket/key | /project/tickets/ticket/name')">Show '/project/tickets/ticket/key | /project/tickets/ticket/name' XPath Result</button><br/>
         <div id="xsltResult"></div>
         <p id="xPathResult"/>
     </body>
