@@ -17,6 +17,12 @@
         <button type="button" onclick="displayXPathResult('/project/tickets/ticket[estimation>2]/name')">Show '/project/tickets/ticket[estimation>2]/name' XPath Result</button><br/>
         <button type="button" onclick="displayXPathResult('/project/node()')">Show '/project/node()' XPath Result</button><br/>
         <button type="button" onclick="displayXPathResult('/project/tickets/ticket/key | /project/tickets/ticket/name')">Show '/project/tickets/ticket/key | /project/tickets/ticket/name' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket/key/ancestor::ticket')">Show '/project/tickets/ticket/key/ancestor::ticket' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket/key/ancestor-or-self::ticket')">Show '/project/tickets/ticket/key/ancestor-or-self::ticket' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/child::ticket')">Show '/project/tickets/child::ticket' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/descendant::ticket')">Show '/project/tickets/descendant::tickets' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/self::tickets')">Show '/project/tickets/self::tickets' XPath Result</button><br/>
+        <button type="button" onclick="displayXPathResult('/project/tickets/ticket/attribute::db_id')">Show '/project/tickets/ticket/attribute::db_id' XPath Result</button><br/>
         <div id="xsltResult"></div>
         <p id="xPathResult"/>
     </body>
