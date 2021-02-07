@@ -1,6 +1,7 @@
 <h1>Status List</h1>
+Search: <input ng-model="$ctrl.query" /><br/>
 <ul>
-    <li ng-repeat="status in $ctrl.statuses">
+    <li ng-repeat="status in $ctrl.statuses | filter:$ctrl.query">
         <span>{{status.name}}</span>
         <p>{{status.status}}</p>
     </li>
