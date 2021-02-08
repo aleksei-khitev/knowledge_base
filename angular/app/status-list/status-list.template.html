@@ -1,8 +1,16 @@
 <h1>Status List</h1>
 Search: <input ng-model="$ctrl.query" /><br/>
+<p>
+    Sort by:
+    <select ng-model="$ctrl.orderProp">
+        <option value="name">Name (alphabetically)</option>
+        <option value="status">Status</option>
+    </select>
+</p>
 <ul>
-    <li ng-repeat="status in $ctrl.statuses | filter:$ctrl.query">
+    <li ng-repeat="status in $ctrl.statuses | filter:$ctrl.query | orderBy:$ctrl.orderProp">
         <span>{{status.name}}</span>
         <p>{{status.status}}</p>
+        <p>{{status.value}}</p>
     </li>
 </ul>

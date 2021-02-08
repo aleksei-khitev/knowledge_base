@@ -7,14 +7,17 @@ angular.
     controller: function StatusListController() {
       this.statuses = [
         {
-          name: 'Tomcat',
-          status: 'Ok'
+          name: 'Tomcat Server',
+          status: 'Ok',
+          value: 'Running'
         }, {
           name: 'Free Space',
-          status: '800MB'
+          status: 'Ok',
+          value: '800MB'
         }, {
-          name: 'Apache',
-          status: 'Ok'
+          name: 'Apache Server',
+          status: 'ERROR',
+          value: 'Failed to runn'
         }
       ];
     }
