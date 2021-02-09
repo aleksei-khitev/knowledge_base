@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [
+        <!ELEMENT project (id,name)>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        ]>
+<?xml-stylesheet type="text/xsl" href="ticket_catalog_list.xsl"?>
+<project>
+    <id>1</id>
+    <name>IT Organizer</name>
+</project>
