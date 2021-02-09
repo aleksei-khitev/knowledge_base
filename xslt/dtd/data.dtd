@@ -1,0 +1,3 @@
+<!ELEMENT project (id,name)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
