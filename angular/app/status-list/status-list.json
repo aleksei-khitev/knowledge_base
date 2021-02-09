@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Tomcat Server",
+    "status": "Ok",
+    "value": "Running"
+  }, {
+    "name": "Free Space",
+    "status": "Ok",
+    "value": "800MB"
+  }, {
+    "name": "Apache Server",
+    "status": "ERROR",
+    "value": "Failed to runn"
+  }
+]

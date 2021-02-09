@@ -1,24 +1,14 @@
 'use strict';
 
 angular.
-  module('statusList').
-  component('statusList', {
-    templateUrl: 'status-list/status-list.template.html',
-    controller: function StatusListController() {
-      this.statuses = [
-        {
-          name: 'Tomcat Server',
-          status: 'Ok',
-          value: 'Running'
-        }, {
-          name: 'Free Space',
-          status: 'Ok',
-          value: '800MB'
-        }, {
-          name: 'Apache Server',
-          status: 'ERROR',
-          value: 'Failed to runn'
+    module('statusList').
+    component('statusList', {
+        templateUrl: 'status-list/status-list.template.html',
+        controller: function StatusListController($http) {
+            var self = this;
+            self.orderProp = 'name';
+            $http.get('status-list/status-list.json').then(function(response) {
+                self.statuses = response.data;
+            });
         }
-      ];
-    }
-  });
+    });

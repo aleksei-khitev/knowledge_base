@@ -5,12 +5,27 @@ describe('statusList', function() {
 
   // Test the controller
   describe('StatusListController', function() {
+    var $httpBackend, ctrl;
 
-    it('should create a `phones` model with 3 phones', inject(function($componentController) {
-      var ctrl = $componentController('statusList');
+    beforeEach(inject(function($componentController, _$httpBackend_) {
+        $httpBackend = _$httpBackend_;
+        $httpBackend.expectGET('status-list/status-list.json')
+            .respond([{name: 'Tomcat Server'}, {name: 'Apache Server'}]);
 
-      expect(ctrl.statuses.length).toBe(3);
+        ctrl = $componentController('statusList');
     }));
+
+
+
+    it('should create a `statuses` property with 2 phones fetched with `$http`', function() {
+        expect(ctrl.statuses).toBeUndefined();
+        $httpBackend.flush();
+        expect(ctrl.statuses).toEqual([{name: 'Tomcat Server'}, {name: 'Apache Server'}]);
+    });
+
+    it('should set a default value for the `orderProp` property', function() {
+        expect(ctrl.orderProp).toBe('name');
+    });
 
   });
 
