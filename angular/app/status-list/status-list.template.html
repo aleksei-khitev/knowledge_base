@@ -9,8 +9,10 @@ Search: <input ng-model="$ctrl.query" /><br/>
 </p>
 <ul>
     <li ng-repeat="status in $ctrl.statuses | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-        <span>{{status.name}}</span>
-        <p>{{status.status}}</p>
+        <a href="#!/statuses/{{status.id}}">
+            <img ng-src="{{status.icon}}" alt="{{status.name}}" style="width:20px;height:20px;"/>
+        </a>
+        <a href="#!/statuses/{{status.id}}">{{status.name}}</a>
         <p>{{status.value}}</p>
     </li>
 </ul>

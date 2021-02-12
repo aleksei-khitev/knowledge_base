@@ -1,15 +1,21 @@
 [
   {
+    "id": 1,
     "name": "Tomcat Server",
     "status": "Ok",
-    "value": "Running"
+    "value": "Running",
+    "icon": "img/status/Ok_status.png"
   }, {
+    "id": 2,
     "name": "Free Space",
     "status": "Ok",
-    "value": "800MB"
+    "value": "800MB",
+    "icon": "img/status/Ok_status.png"
   }, {
+    "id": 3,
     "name": "Apache Server",
     "status": "ERROR",
-    "value": "Failed to runn"
+    "value": "Failed to runn",
+    "icon": "img/status/failed_status.jpg"
   }
 ]
