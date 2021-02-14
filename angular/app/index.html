@@ -1,16 +1,20 @@
 <!doctype html>
-<html lang="en" ng-app="statusReaderView">
+<html lang="en" ng-app="statusReader">
   <head>
     <meta charset="utf-8">
     <title>My HTML File</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
     <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
     <script src="status-list/status-list.module.js"></script>
     <script src="status-list/status-list.component.js"></script>
+    <script src="status-detail/status-detail.module.js"></script>
+    <script src="status-detail/status-detail.component.js"></script>
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-  <status-list></status-list>
+    <div ng-view></div>
   </body>
 </html>

@@ -1,9 +1,10 @@
 'use strict';
 
-// Define the `statusReaderView` module
-var statusReaderView = angular.module('statusReaderView',
+// Define the `statusReader` module
+var statusReader = angular.module('statusReader',
     [
-        // ...which depends on the `statusList` module
+        'ngRoute',
+        'statusDetail',
         'statusList'
     ]
 );
