@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project SYSTEM "data.dtd">
 <?xml-stylesheet type="text/xsl" href="ticket_catalog_list.xsl"?>
-<project>
+<project system="it-organizer">
     <id>1</id>
     <name>IT Organizer</name>
+    <tickets>
+        <ticket db_id="1" created_date="01.02.2021">
+            <key>SP-123</key>
+            <name>Java 11 Migration</name>
+            <priority>P3</priority>
+            <estimation>16</estimation>
+            <due_date>03.03.2021</due_date>
+        </ticket>
+        <ticket db_id="2" created_date="04.02.2021" updated_date="13.02.2021" source="Jira">
+            <key>SP-145</key>
+            <name>Docker Compose Introduction</name>
+            <priority>P1</priority>
+            <estimation>4</estimation>
+        </ticket>
+        <ticket db_id="3" created_date="02.02.2021" source="Jira">
+            <key>SP-198</key>
+            <name>logs Investigation</name>
+            <priority>P2</priority>
+            <estimation>8</estimation>
+        </ticket>
+        <ticket created_date="01.12.2020">
+            <key>SP-128</key>
+            <name>WiKi Update</name>
+            <priority>P3</priority>
+            <estimation>4</estimation>
+        </ticket>
+    </tickets>
 </project>

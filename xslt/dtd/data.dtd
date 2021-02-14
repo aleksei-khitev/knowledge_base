@@ -1,3 +1,14 @@
-<!ELEMENT project (id,name)>
+<!ELEMENT project (id,name,tickets)>
 <!ELEMENT id (#PCDATA)>
 <!ELEMENT name (#PCDATA)>
+<!ELEMENT tickets (ticket+)>
+<!ELEMENT ticket (key,name,priority,estimation?,due_date?)>
+<!ELEMENT key (#PCDATA)>
+<!ELEMENT priority (#PCDATA)>
+<!ELEMENT estimation (#PCDATA)>
+<!ELEMENT due_date (#PCDATA)>
+<!ATTLIST project system CDATA #FIXED "it-organizer">
+<!ATTLIST ticket db_id CDATA "null">
+<!ATTLIST ticket created_date CDATA #REQUIRED>
+<!ATTLIST ticket updated_date CDATA #IMPLIED>
+<!ATTLIST ticket source (Jira|Manual) "Manual">
