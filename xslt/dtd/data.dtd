@@ -1,5 +1,6 @@
-<!ELEMENT project (id,name,tickets)>
+<!ELEMENT project (id,name,tickets,author)>
 <!ELEMENT id (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT tickets (ticket+)>
 <!ELEMENT ticket (key,name,priority,estimation?,due_date?)>
@@ -12,3 +13,5 @@
 <!ATTLIST ticket created_date CDATA #REQUIRED>
 <!ATTLIST ticket updated_date CDATA #IMPLIED>
 <!ATTLIST ticket source (Jira|Manual) "Manual">
+<!ENTITY author_name "Some Name">
+<!ENTITY author_email "some.name@domain.ru">
