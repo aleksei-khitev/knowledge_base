@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="ogzeMember" abstract="true"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="guild" value="Орден Героев Забытых Эпох" />
+        <property name="mainCharacter" value="true"/>
+    </bean>
+
+    <bean id="Endemeon" parent="ogzeMember"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="name" value="Эндемеон" />
+    </bean>
+    <bean id="Sansheg" parent="ogzeMember"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="name" value="Саншег" />
+    </bean>
+    <bean id="Semetery" parent="ogzeMember"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="name" value="Семетери" />
+    </bean>
+    <bean id="Eglin" parent="ogzeMember"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="name" value="Эглин" />
+    </bean>
+    <bean id="Konich" parent="ogzeMember"
+          class="ru.akhitev.kb.spring.parent.Character">
+        <property name="name" value="Коныч" />
+        <property name="mainCharacter" value="false"/>
+    </bean>
+</beans>

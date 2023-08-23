@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'ru.akhitev.kb'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+ext {
+    bootVersion = '2.0.6.RELEASE'
+    h2Version = '1.4.194'
+
+    boot = [
+            springBootPlugin    : "org.springframework.boot:spring-boot-gradle-plugin:$bootVersion",
+            starterJdbc         : "org.springframework.boot:spring-boot-starter-jdbc:$bootVersion",
+            starterJpa          : "org.springframework.boot:spring-boot-starter-data-jpa:$bootVersion"
+    ]
+
+    db = [
+            h2                  : "com.h2database:h2:$h2Version",
+    ]
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile boot.starterJdbc, db.h2, boot.starterJpa
+}

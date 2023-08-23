@@ -1,0 +1,4 @@
+package optional;
+
+class BusinessAnalyst {
+}

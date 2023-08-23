@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="message" class="java.lang.String" c:_0="May Die"/>
+
+    <bean id="Beam" class="ru.akhitev.kb.spring.get_from_parent_not_from_child_context.MessageBeam">
+        <constructor-arg>
+            <ref parent="message" />
+        </constructor-arg>
+    </bean>
+
+</beans>
