@@ -1,14 +1,14 @@
 package sort.selection;
 
-/**
- * Сортировка выбором
- * @param <T>
- */
+/** Сортировка выбором */
 public class SelectionSorter<T extends Comparable<T>> {
 
     public T[] sort(T[] elements) {
         for (int i = 0; i < elements.length; i++) {
+            // Нашли индекс минимального элемента от i до конца массива
             int smallestElementIndex = findIndexOfSmallestElement(elements, i);
+
+            // Поменяли местами значение с i-ым элементом
             T smallestElement = elements[smallestElementIndex];
             elements[smallestElementIndex] = elements[i];
             elements[i] = smallestElement;
@@ -16,12 +16,7 @@ public class SelectionSorter<T extends Comparable<T>> {
         return elements;
     }
 
-    /**
-     * Находим следующий минимальный элемент
-     * @param elements
-     * @param fromIndex
-     * @return
-     */
+    /** Находим следующий минимальный элемент */
     private int findIndexOfSmallestElement(T[] elements, int fromIndex) {
         T smallest = elements[fromIndex];
         int smallestElementIndex = fromIndex;
