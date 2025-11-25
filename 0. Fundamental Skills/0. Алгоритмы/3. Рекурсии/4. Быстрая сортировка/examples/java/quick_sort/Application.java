@@ -1,4 +1,4 @@
-package recursion.quick_sort;
+package quick_sort;
 
 import java.util.List;
 

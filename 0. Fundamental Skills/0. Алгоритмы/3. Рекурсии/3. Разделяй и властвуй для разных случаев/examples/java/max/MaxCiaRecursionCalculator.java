@@ -1,4 +1,4 @@
-package recursion.max;
+package max;
 
 public class MaxCiaRecursionCalculator {
     public int calculate(int... numbers) {

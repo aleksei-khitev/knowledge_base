@@ -1,4 +1,4 @@
-package recursion.count;
+package count;
 
 public class CountViaRecursionCalculator {
     public int calculate(int... numbers) {

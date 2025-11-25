@@ -1,4 +1,4 @@
-package recursion.count;
+package count;
 
 public class Application {
     public static void main(String[] args) {

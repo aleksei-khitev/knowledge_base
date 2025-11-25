@@ -1,4 +1,4 @@
-package recursion.sum;
+package sum;
 
 public class SumViaRecursionCalculator {
     public int calculate(int... numbers) {

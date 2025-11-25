@@ -16,8 +16,12 @@ public class NearestNeighborByFilmGenresTastesFinder {
             for (Genres genre : Genres.values()) {
                 vector += Math.pow(person.moviesPreferences().get(genre) - neighbor.moviesPreferences().get(genre), 2);
             }
-            vector = Math.sqrt(vector);
-            neighborDistance.put(vector, neighbor);
+            try {
+                vector = Math.sqrt(vector);
+                neighborDistance.put(vector, neighbor);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         return neighborDistance.pollFirstEntry().getValue().name();
     }

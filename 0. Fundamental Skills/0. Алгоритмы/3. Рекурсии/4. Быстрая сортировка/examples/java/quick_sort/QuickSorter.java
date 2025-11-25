@@ -1,4 +1,4 @@
-package recursion.quick_sort;
+package quick_sort;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
