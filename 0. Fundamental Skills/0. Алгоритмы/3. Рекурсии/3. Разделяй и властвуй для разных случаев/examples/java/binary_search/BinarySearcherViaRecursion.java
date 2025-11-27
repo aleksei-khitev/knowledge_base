@@ -1,4 +1,4 @@
-package recursion.binary_search;
+package binary_search;
 
 public class BinarySearcherViaRecursion <T extends Comparable<T>> {
     public int find(T element, T... elements) {
