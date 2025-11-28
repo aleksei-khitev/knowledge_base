@@ -1,4 +1,4 @@
-package graph.breadth_first_search;
+package breadth_first_search;
 
 import java.util.List;
 import java.util.Map;

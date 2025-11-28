@@ -1,7 +1,6 @@
-package graph.breadth_first_search;
+package breadth_first_search;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BfsSearcher {
     public String search(Map<String, List<String>> tree, String initNode, String targetNode) {
