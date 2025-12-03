@@ -1,4 +1,4 @@
-package graph.tree.binary_tree.haffman;
+package haffman;
 
 import java.util.Map;
 
