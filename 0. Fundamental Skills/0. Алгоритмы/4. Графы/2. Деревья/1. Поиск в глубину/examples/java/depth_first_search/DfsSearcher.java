@@ -1,4 +1,4 @@
-package graph.tree.depth_first_search;
+package depth_first_search;
 
 import java.util.List;
 import java.util.Map;
@@ -18,5 +18,4 @@ public class DfsSearcher {
         }
         return false;
     }
-
 }
