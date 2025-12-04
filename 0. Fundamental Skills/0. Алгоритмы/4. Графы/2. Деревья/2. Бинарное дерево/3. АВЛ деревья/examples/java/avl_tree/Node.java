@@ -1,4 +1,4 @@
-package graph.tree.binary_tree.avl_tree;
+package avl_tree;
 
 import java.util.Optional;
 
