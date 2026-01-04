@@ -1,4 +1,4 @@
-package graph.tree.dijkstra_algo;
+package dijkstra_algo;
 
 public class EdgeCost {
     private final String node;

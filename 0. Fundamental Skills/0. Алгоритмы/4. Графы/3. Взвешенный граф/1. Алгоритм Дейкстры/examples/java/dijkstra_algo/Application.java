@@ -1,6 +1,5 @@
-package graph.tree.dijkstra_algo;
+package dijkstra_algo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
