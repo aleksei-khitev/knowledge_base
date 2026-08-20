@@ -1,8 +1,0 @@
-@startuml
-class car {
-  + vinNumber: String
-  + producer: String
-  + model: String
-  + produceYear: String
-}
-  @enduml
